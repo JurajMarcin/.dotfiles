@@ -1,0 +1,8 @@
+[Unit]
+Description=Launch Flameshot
+
+[Service]
+ExecStart=/usr/bin/flameshot
+
+[Install]
+WantedBy=graphical.target

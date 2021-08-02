@@ -1,0 +1,4 @@
+[Unit]
+Description=Graphical applications
+Requires=default.target
+After=default.target

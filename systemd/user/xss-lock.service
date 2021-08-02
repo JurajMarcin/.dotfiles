@@ -1,0 +1,8 @@
+[Unit]
+Description=Launch XSS Lock service
+
+[Service]
+ExecStart=/usr/bin/xss-lock -- /home/juraj/.config/i3/lock
+
+[Install]
+WantedBy=graphical.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=(Re)Launch Polybar
+
+[Service]
+Type=forking
+ExecStart=/home/juraj/.config/polybar/launch.sh
+
+[Install]
+WantedBy=graphical.target

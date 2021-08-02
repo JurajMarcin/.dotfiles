@@ -1,0 +1,8 @@
+[Unit]
+Description=Launch XModmap service
+
+[Service]
+ExecStart=/usr/bin/xmodmap /home/juraj/.Xmodmap
+
+[Install]
+WantedBy=graphical.target

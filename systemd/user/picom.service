@@ -1,0 +1,8 @@
+[Unit]
+Description=Launch Picom compositor with user config
+
+[Service]
+ExecStart=/usr/bin/picom --config /home/juraj/.config/picom.conf
+
+[Install]
+WantedBy=graphical.target
