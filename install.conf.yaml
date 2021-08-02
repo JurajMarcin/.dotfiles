@@ -1,0 +1,22 @@
+- defaults:
+    link:
+        relink: true
+
+- clean: ['~']
+
+- link:
+    # GnuPG
+    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
+    # tmux
+    ~/.tmux.conf: tmux.conf
+    ~/.tmux: tmux
+    # X utils
+    ~/.XCompose: XCompose
+    ~/.Xmodmap: Xmodmap
+    ~/.xprofile: xprofile
+    # Zsh
+    ~/.zshrc: zshrc
+    ~/.zshenv: zshenv
+    ~/.zsh: zsh
+
+# vi: set tabwidth=4 shiftwidth=4
