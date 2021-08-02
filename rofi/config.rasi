@@ -1,0 +1,51 @@
+configuration {
+  show-icons: true;
+}
+
+* {
+  background-color: #424242;
+  text-color: #FFFFFF;
+  spacing: 0;
+  width: 512px;
+  font: "Roboto 12";
+}
+
+inputbar {
+  border: 0;
+  children: [prompt,entry];
+}
+
+prompt {
+  padding: 16px 8px;
+  background-color: #212121;
+}
+
+textbox {
+  border: 0;
+  padding: 8px 16px;
+}
+
+entry {
+  background-color: #212121;
+  padding: 16px 8px;
+}
+
+listview {
+  cycle: false;
+  margin: 0 0 -1px 0;
+  scrollbar: false;
+}
+
+element {
+  border: 0;
+  padding: 8px;
+}
+
+element-icon {
+  size: 32px;
+}
+
+element selected {
+  background-color: #FAFAFA;
+  text-color: #212121; 
+}

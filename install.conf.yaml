@@ -23,6 +23,8 @@
     ~/.config/picom.conf: picom.conf
     # Polybar
     ~/.config/polybar: polybar
+    # Rofi menu
+    ~/.config/rofi: rofi
     # tmux
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
