@@ -7,6 +7,8 @@
 - link:
     # Alacritty
     ~/.config/alacritty: alacritty
+    # Dunst
+    ~/.config/dunst: dunst
     # GnuPG
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     # tmux
