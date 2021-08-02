@@ -1,0 +1,114 @@
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    family: Source Code Pro
+    style: Regular
+
+  # Bold font face
+  bold:
+    style: Bold
+
+  # Italic font face
+  italic:
+    style: Italic
+
+  # Bold italic font face
+  bold_italic:
+    style: Bold Italic
+
+  # Point size
+  size: 11.0
+
+  offset:
+    x: 1
+    y: 0
+
+
+# Colors (Material)
+colors:
+  # Default colors
+  primary:
+    background: '#212121'
+    foreground: '#EEEEEE'
+
+    # Bright and dim foreground colors
+    dim_foreground: '#BDBDBD'
+    bright_foreground: '#FFFFFF'
+
+  # Search colors
+  search:
+    matches:
+      foreground: '#212121'
+      background: '#FFEA00'
+
+    bar:
+      foreground: '#212121'
+      background: '#FFEA00'
+
+  # Normal colors
+  normal:
+    black:   '#212121'
+    red:     '#F44336'
+    green:   '#4CAF50'
+    yellow:  '#FFEB3B'
+    blue:    '#2196F3'
+    magenta: '#E91E63'
+    cyan:    '#26C6DA'
+    white:   '#EEEEEE'
+
+  # Bright colors
+  bright:
+    black:   '#424242'
+    red:     '#EF9A9A'
+    green:   '#A5D6A7'
+    yellow:  '#FFF59D'
+    blue:    '#81D4FA'
+    magenta: '#F48FB1'
+    cyan:    '#80DEEA'
+    white:   '#FFFFFF'
+
+  # Dim colors
+  dim:
+    black:   '#000000'
+    red:     '#C62828'
+    green:   '#2E7D32'
+    yellow:  '#F9A825'
+    blue:    '#0277BD'
+    magenta: '#AD1457'
+    cyan:    '#00838F'
+    white:   '#BDBDBD'
+
+# Key bindings
+key_bindings:
+  - { key: Paste,                                      action: Paste          }
+  - { key: Copy,                                       action: Copy           }
+  - { key: L,              mods: Control,              action: ClearLogNotice }
+  - { key: L,              mods: Control,  mode: ~Vi,  chars: "\x0c"          }
+  - { key: PageUp,         mods: Shift,    mode: ~Alt, action: None           }
+  - { key: PageDown,       mods: Shift,    mode: ~Alt, action: None           }
+  - { key: Home,           mods: Shift,    mode: ~Alt, action: None           }
+  - { key: End,            mods: Shift,    mode: ~Alt, action: None           }
+
+  # Vi Mode
+  - { key: Space,          mods: Shift|Control,        action: None }
+
+  # (Windows, Linux, and BSD only)
+  - { key: V,              mods: Control|Shift,        action: Paste            }
+  - { key: C,              mods: Control|Shift,        action: Copy             }
+  - { key: F,              mods: Control|Shift,        action: SearchForward    }
+  - { key: B,              mods: Control|Shift,        action: SearchBackward   }
+  - { key: Insert,         mods: Shift,                action: None             }
+  - { key: Key0,           mods: Control,              action: None             }
+  - { key: Equals,         mods: Control,              action: ResetFontSize    }
+  - { key: Plus,           mods: Control,              action: IncreaseFontSize }
+  - { key: NumpadAdd,      mods: Control,              action: IncreaseFontSize}
+  - { key: Minus,          mods: Control,              action: DecreaseFontSize }
+  - { key: NumpadSubtract, mods: Control,              action: DecreaseFontSize }
+
+# Bell
+bell:
+  # Bell Command
+  command:
+    program: paplay
+    args: ["/usr/share/sounds/freedesktop/stereo/bell.oga"]

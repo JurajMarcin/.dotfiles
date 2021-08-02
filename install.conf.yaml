@@ -5,6 +5,8 @@
 - clean: ['~']
 
 - link:
+    # Alacritty
+    ~/.config/alacritty: alacritty
     # GnuPG
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     # tmux
