@@ -19,6 +19,8 @@
     ~/.config/i3: i3
     # Neovim
     ~/.config/nvim: nvim
+    # Picom
+    ~/.config/picom.conf: picom.conf
     # tmux
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
