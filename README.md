@@ -2,7 +2,7 @@
 
 Obligatory dotfiles repository for my Arch Linux setup.
 
-# Programs (and their additional dependencies)
+## Programs (and their additional dependencies)
 
 + alacritty
     + libpulse (paplay)
@@ -38,7 +38,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
 + zsh
     + git
 
-# Used fonts
+## Used fonts
 
 + Material Design Icons (polybar)
 + Noto (fontconfig)
