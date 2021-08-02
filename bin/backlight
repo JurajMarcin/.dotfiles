@@ -1,0 +1,13 @@
+#!/bin/bash
+
+xbacklight "$@" >/dev/null
+
+brightness=$(xbacklight -get)
+
+bar=$(seq -s "─" `echo "$brightness / 2" | bc` | sed 's/[0-9]//g')
+
+dunstify \
+    -a "bar-notify" \
+    -i video-display-symbolic.symbolic \
+    -r 424242 \
+    "`printf "%d" $brightness`% $bar"

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [[ "$1" = "--mute-toggle" ]]; then
+    if [[ $(pamixer --get-mute) = "true" ]]; then
+        pamixer -u >/dev/null
+    else
+        pamixer -m >/dev/null
+    fi
+else
+    pamixer "$@" >/dev/null
+fi
+
+volume=$(pamixer --get-volume)
+mute=$(pamixer --get-mute)
+
+bar=$(seq -s "─" $(($volume / 2)) | sed 's/[0-9]//g')
+
+if [[ "$mute" = "true" ]]; then
+    dunstify -a "bar-notify" -i audio-volume-muted-symbolic.symbolic -r 424242 "$volume% $bar"
+else
+    dunstify -a "bar-notify" -i audio-volume-high-symbolic.symbolic -r 424242 "$volume% $bar"
+fi

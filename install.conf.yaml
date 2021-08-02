@@ -4,7 +4,14 @@
 
 - clean: ['~']
 
+- create:
+    - ~/.local/bin
+
 - link:
+    # Misc scripts
+    ~/.local/bin/backlight: bin/backlight
+    ~/.local/bin/lock: bin/lock
+    ~/.local/bin/volume: bin/volume
     # Alacritty
     ~/.config/alacritty: alacritty
     # Dunst
@@ -46,6 +53,8 @@
     ~/.zsh: zsh
 
 - shell:
+    # Update dotbot submodule
+    - [git submodule update --init --recursive, Installing submodules]
     # Dunst
     - [systemctl --user enable dunst.service, Enabling dunst service]
     # Flameshot

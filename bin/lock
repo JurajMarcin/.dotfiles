@@ -1,0 +1,5 @@
+#!/bin/bash
+
+image="$HOME/.local/share/wallpapers/lock/$(ls ~/.local/share/wallpapers/lock/ | sort -R | tail -n1)"
+
+exec i3lock --nofork --tiling --image="$image"
