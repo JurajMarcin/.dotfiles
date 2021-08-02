@@ -9,6 +9,8 @@
     ~/.config/alacritty: alacritty
     # Dunst
     ~/.config/dunst: dunst
+    # Flameshot
+    ~/.config/flameshot: flameshot
     # GnuPG
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     # tmux
