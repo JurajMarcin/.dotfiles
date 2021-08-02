@@ -17,6 +17,8 @@
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     # i3-gaps
     ~/.config/i3: i3
+    # Neovim
+    ~/.config/nvim: nvim
     # tmux
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
@@ -28,5 +30,10 @@
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
     ~/.zsh: zsh
+
+- shell:
+    # Neovim
+    - [./.install-vim-plug.sh, Installing vim plug for neovim]
+    - [nvim +PlugInstall +PlugClean +PlugUpgrade +PlugUpdate +qa, Installing neovim plugins]
 
 # vi: set tabwidth=4 shiftwidth=4
