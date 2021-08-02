@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# Author: Juraj Marcin <juraj@jurajmarcin.com>
+#
+# Usage ./dunststatus [ACTION [ICON_ENABLED [ICON_DISABLED [COLOR_ENABLED [COLOR_DISABLED]]]]]
+#
+# Actions:
+# toggle    -- toggle notifications
+# status    -- only shows status
+#
+# Defaults:
+# ICON_ENABLED=Y
+# ICON_DISABLED=N
+# COLOR_ENABLED=#00FF00 (green)
+# COLOR_DISABLED=#FF0000 (red)
+
+ICON_ENABLED="${2:-Y}"
+ICON_DISABLED="${3:-N}"
+COLOR_ENABLED="${4:-#00FF00}"
+COLOR_DISABLED="${5:-#FF0000}"
+
+if [ "$1" = "toggle" ]; then
+    dunstctl set-paused toggle
+fi
+
+DUNST_STATUS=$(dunstctl is-paused)
+
+if [ "$DUNST_STATUS" = "true" ]; then
+    echo "%{F$COLOR_DISABLED}$ICON_DISABLED%{F-}"
+else
+    echo "%{F$COLOR_ENABLED}$ICON_ENABLED%{F-}"
+fi

@@ -21,6 +21,8 @@
     ~/.config/nvim: nvim
     # Picom
     ~/.config/picom.conf: picom.conf
+    # Polybar
+    ~/.config/polybar: polybar
     # tmux
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux

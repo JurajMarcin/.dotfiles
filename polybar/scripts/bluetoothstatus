@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# Author: Juraj Marcin <juraj@jurajmarcin.com>
+#
+# Usage ./bluetoothstatus ACTION [ICON_OFF [ICON_ON [ICON_CONNECTED [ICON_HID [ICON_AUDIO [ICON_PHONE [COLOR_ON [COLOR_OFF]]]]]]]]
+#
+# Actions:
+#
+# toggle    -- toggle bluetooth on and off
+# status    -- tail bluetooth status
+
+ICON_OFF="${2:-N}"
+ICON_ON="${3:-Y}"
+ICON_CONNECTED="${4:-C}"
+ICON_HID="${5:-H}"
+ICON_AUDIO="${6:-A}"
+ICON_PHONE="${7:-P}"
+COLOR_ON="${8:-#00FF00}"
+COLOR_OFF="${9:-#FF0000}"
+
+bt_tail() {
+    bluetoothctl | while read -r; do
+        if [ "$(systemctl is-active "bluetooth.service")" = "active" ] \
+            && bluetoothctl show | grep -q "Powered: yes"; then
+
+            devices=""
+
+            bluetoothctl paired-devices | grep Device \
+                | {
+                while read -r class addr name; do
+                    device_info=$(bluetoothctl info "$addr")
+                    if echo "$device_info" | grep -q "Connected: yes"; then
+                        if echo "$device_info" | grep -q "Icon: input-mouse"; then
+                            devices="$devices$ICON_HID"
+                        elif echo "$device_info" | grep -q "Icon: audio-card"; then
+                            devices="$devices$ICON_AUDIO"
+                        else
+                            devices="$devices$ICON_CONNECTED"
+                        fi
+                    fi
+                done
+                
+                echo "%{F$COLOR_ON}${devices:-$ICON_ON}%{F-}"
+            }
+
+        else
+            echo "%{F$COLOR_OFF}$ICON_OFF%{F-}"
+        fi
+    done
+}
+
+bt_toggle() {
+    if bluetoothctl show | grep -q "Powered: no"; then
+        bluetoothctl power on >& /dev/null
+    else
+        bluetoothctl power off >& /dev/null
+    fi
+}
+
+case "$1" in
+    toggle)
+        bt_toggle;;
+    status)
+        bt_tail;;
+    *)
+        echo "Action not supported"
+        exit 1
+        ;;
+esac

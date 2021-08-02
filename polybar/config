@@ -1,0 +1,280 @@
+# vim: filetype=cfg
+
+[colors]
+bg     = #212121
+bg-alt = #CFD8DC
+fg     = #FFFFFF
+fg-alt = #616161
+acc    = #F44336
+
+[bar/main]
+monitor = ${env:MONITOR}
+width = 100%
+height = 30
+radius = 0
+fixed-center = true
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Roboto:style=Medium:size=11;3
+font-1 = MaterialDesignIcons:style=Regular:size=14;4
+
+modules-left = powermenu i3 player-mpris-tail
+modules-center = date
+modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio dunst xkeyboard
+
+tray-position = right
+tray-padding = 0
+tray-detached = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+;
+; WM Management
+;
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.acc}
+
+label-focused = %icon%
+label-focused-foreground = ${colors.fg}
+
+label-unfocused = %icon%
+label-unfocused-foreground = ${colors.fg-alt}
+
+label-visible = %icon%
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.acc}
+
+ws-icon-0 = 1;󰎤
+ws-icon-1 = 2;󰎧
+ws-icon-2 = 3;󰎪
+ws-icon-3 = 4;󰎭
+ws-icon-4 = 5;󰎱
+ws-icon-5 = 6;󰎳
+ws-icon-6 = 7;󰎶
+ws-icon-7 = 8;󰎹
+ws-icon-8 = 9;󰎼
+ws-icon-9 = 10;󰽽
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 0
+
+label-open = 󰣇
+label-close = 󰅖
+label-separator = 󰤃
+
+menu-0-0 = 󰍃
+menu-0-0-exec = menu-open-1
+menu-0-1 = 󰤄
+menu-0-1-exec = menu-open-2
+menu-0-2 = 󰜉
+menu-0-2-exec = menu-open-3
+menu-0-3 = 󰐥
+menu-0-3-exec = menu-open-4
+
+menu-1-0 = 󰍃
+menu-1-0-exec = i3-msg exit
+
+menu-2-0 = 󰤄
+menu-2-0-exec = systemctl suspend
+
+menu-3-0 = 󰜉
+menu-3-0-exec = systemctl reboot
+
+menu-4-0 = 󰐥
+menu-4-0-exec = systemctl poweroff
+
+;
+; System
+;
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+time-format = %H:%M
+
+format-charging = 󰂄 <label-charging>
+label-charging = %percentage:3%% %time%
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage:3%% %time%
+
+format-full = 󰚥 <label-full>
+label-full = %percentage_raw:3%%
+
+ramp-capacity-0 = 󰁺
+ramp-capacity-1 = 󰁻
+ramp-capacity-2 = 󰁼
+ramp-capacity-3 = 󰁽
+ramp-capacity-4 = 󰁾
+ramp-capacity-5 = 󰁿
+ramp-capacity-6 = 󰂀
+ramp-capacity-7 = 󰂁
+ramp-capacity-8 = 󰂂
+ramp-capacity-9 = 󰁹
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = %percentage:2%%
+format = 󰻠 <label>
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 85
+
+format = 󰏈 <label>
+format-warn = 󰏈 <label-warn>
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.acc}
+
+[module/disk]
+type = internal/fs
+mount-0 = /
+label-mounted = %used%
+format-mounted = 󰋊 <label-mounted>
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %mb_used% %mb_swap_used%
+format = 󰍛 <label>
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+format = 󰌌 <label-layout> <label-indicator>
+
+label-layout = %layout%
+
+label-indicator-on = %icon%
+label-indicator-off = %icon%
+
+indicator-icon-0 = num lock;%{F#616161}󰎥%{F-};%{F#FFFFFF}󰎥%{F-}
+
+[module/date]
+type = internal/date
+interval = 5
+date = %a %d/%m
+time = %R
+label = %date% %time%
+
+;
+; Networking
+;
+
+[module/eth]
+type = internal/network
+interface = enp7s0
+interval = 3.0
+
+format-connected = 󰌘 <label-connected>
+label-connected = %ifname%
+
+format-disconnected = 󰌙
+format-disconnected-foreground = ${colors.fg-alt}
+
+[module/wlan]
+type = internal/network
+interface = wlp6s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+
+format-disconnected = 󰤭
+format-disconnected-foreground = ${colors.fg-alt}
+
+ramp-signal-0 = 󰤟
+ramp-signal-1 = 󰤢
+ramp-signal-2 = 󰤥
+ramp-signal-3 = 󰤨
+
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/scripts/bluetoothstatus status '󰂲' '󰂯' '󰂱' '󰦋' '󰗾' '󰏳' '#FFFFFF' '#616161'
+tail = true
+click-left = ~/.config/polybar/scripts/bluetoothstatus toggle
+
+;
+; Media
+;
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+interval = 1
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage:3%%
+
+label-muted = 󰝟 %percentage:3%%
+label-muted-foreground = ${colors.fg-alt}
+
+ramp-volume-0 = 󰕿
+ramp-volume-1 = 󰖀
+ramp-volume-2 = 󰖀
+ramp-volume-3 = 󰕾
+ramp-volume-4 = 󰕾
+
+click-right = pavucontrol
+
+[module/dunst]
+type = custom/script
+exec = ~/.config/polybar/scripts/dunststatus show '󰂚' '󰂛' '#FFFFFF' '#616161'
+click-left = ~/.config/polybar/scripts/dunststatus toggle '󰂚' '󰂛' '#FFFFFF' '#616161'
+label = "%output%"
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:t20:{artist}:} - {:t40:{title}:}' --icon-playing '󰏤' --icon-paused '󰐊' --icon-stopped '󰓛' --icon-none ''
+tail = true
+label = %output%
+click-middle = ~/.config/polybar/scripts/player-mpris-tail.py previous
+click-right = ~/.config/polybar/scripts/player-mpris-tail.py next
+click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause
+
+;
+; Other Settings
+;
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
