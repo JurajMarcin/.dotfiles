@@ -6,6 +6,8 @@
 
 - create:
     - ~/.local/bin
+    - ~/Mail/Personal
+    - ~/Mail/MUNI
 
 - link:
     # Misc scripts
@@ -18,7 +20,6 @@
     ~/.config/dunst: dunst
     ~/.config/systemd/user/dunst.service: systemd/user/dunst.service
     # Flameshot
-    ~/.config/flameshot: flameshot
     ~/.config/systemd/user/flameshot.service: systemd/user/flameshot.service
     # Fonts
     ~/.config/fontconfig: fontconfig
@@ -26,8 +27,14 @@
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     # i3-gaps
     ~/.config/i3: i3
+    # Mbsync
+    ~/.mbsyncrc: mbsyncrc
+    ~/.config/systemd/user/mbsync.service: systemd/user/mbsync.service
+    ~/.config/systemd/user/mbsync.timer: systemd/user/mbsync.timer
     # Neovim
     ~/.config/nvim: nvim
+    # Neomutt
+    ~/.config/neomutt: neomutt
     # Picom
     ~/.config/picom.conf: picom.conf
     ~/.config/systemd/user/picom.service: systemd/user/picom.service
@@ -55,17 +62,21 @@
 - shell:
     # Update dotbot submodule
     - [git submodule update --init --recursive, Installing submodules]
+    # Reload systemd daeomon
+    - [systemctl --user daemon-reload, Reloading systemd daemon]
     # Dunst
-    - [systemctl --user enable dunst.service, Enabling dunst service]
+    - [systemctl --user enable --now dunst.service, Enabling dunst service]
     # Flameshot
-    - [systemctl --user enable flameshot.service, Enabling flameshot service]
+    - [systemctl --user enable --now flameshot.service, Enabling flameshot service]
+    # Mbsync
+    - [systemctl --user enable --now mbsync.timer, Enabling mbsync timer]
     # Neovim
     - [./.install-vim-plug.sh, Installing vim plug for neovim]
     - [nvim +PlugInstall +PlugClean +PlugUpgrade +PlugUpdate +qa, Installing neovim plugins]
     # Picom
-    - [systemctl --user enable picom.service, Enabling picom service]
+    - [systemctl --user enable --now picom.service, Enabling picom service]
     # X utils
-    - [systemctl --user enable xmodmap.service, Enabling xmodmap service]
-    - [systemctl --user enable xss-lock.service, Enabling xss-lock service]
+    - [systemctl --user enable --now xmodmap.service, Enabling xmodmap service]
+    - [systemctl --user enable --now xss-lock.service, Enabling xss-lock service]
 
 # vi: set tabwidth=4 shiftwidth=4

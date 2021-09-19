@@ -1,0 +1,102 @@
+# vim: filetype=neomuttrc
+set folder              = "~/Mail/"
+set mbox_type           = Maildir
+
+set editor              = "nvim"
+
+set header_cache        = "~/.cache/neomutt/header"
+set message_cachedir    = "~/.cache/neomutt/mail"
+
+set edit_headers                        # show headers when composing
+set fast_reply                          # skip to compose when replying
+set forward_format      = "Fwd: %s"     # format of subject when forwarding
+set forward_decode                      # decode when forwarding
+set reply_to                            # reply to Reply to: field
+set reverse_name                        # reply as whomever it was to
+set include                             # include message in replies
+set forward_quote                       # include message in forwards
+unset mime_forward                      # forward attachments as part of body
+set sort                = threads
+set sort_aux            = reverse-last-date-received
+
+set mailcap_path        = "~/.config/neomutt/mailcap"
+auto_view               text/html
+alternative_order       text/plain text/enriched text/html
+macro attach            'V' \
+                        "<pipe-entry>iconv -c --to-code=UTF8 > /tmp/mail.html<enter><shell-escape>brave /tmp/mail.html<enter>"
+
+set new_mail_command    = "dunstify -i mail-unread-symbolic.symbolic -a neomutt 'New email in %D' '%n new %o unread'"
+
+# Sidebar
+
+set sidebar_visible
+set mail_check_stats
+
+# Visuals
+
+set date_format     = "%F %R"
+color normal    white   black
+
+# Informational
+color error     black   red
+color warning   black   yellow
+
+# Status visuals
+
+set status_format   = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
+
+# Index visuals
+
+set index_format    = "[%Z] %D  %-20.20L  %s"
+color index                             white       default     ".*"
+color index                 bold        brightred   default     "~O"
+color index                 bold        red         default     "~N"
+color index                             yellow      default     "~F"
+
+# Pager visuals
+
+color markers                           cyan        default
+color tilde                             cyan        default
+color search                            black       yellow
+color hdrdefault            bold        white       default
+
+# Sidebar visuals
+
+set sidebar_format  = "%B%* %?F?[%F]? %?N?%N/?%S"
+color sidebar_highlight     underline   default     default
+color sidebar_new           bold        red         default
+color sidebar_unread        bold        brightred   default
+color sidebar_flagged                   yellow      default
+
+# Compose
+color compose header        bold        default     default
+
+# Contact managament
+
+set query_command   =   "khard email --parsable %s"
+macro index,pager   A   "<pipe-message>khard add-email<return>" \
+                        "Add this sender to khard"
+
+# General
+bind index          d       delete-message
+bind index          D       undelete-message
+bind index          A       purge-message
+bind index          U       toggle-new
+bind index          I       flag-message
+bind index,pager    \Cr     sync-mailbox
+bind pager          <up>    previous-line
+bind pager          <down>  next-line
+macro pager         \Cb     |urlscan\n
+
+# Sidebar
+bind index,pager    B           sidebar-toggle-visible
+bind index,pager    <left>      sidebar-prev
+bind index,pager    <right>     sidebar-next
+bind index,pager    <esc><esc>  sidebar-open
+
+mailboxes `find ~/Mail -type d -name cur -printf '"%h"\n' | sort | xargs`
+
+folder-hook "MUNI" source ~/.config/neomutt/muni
+folder-hook "Personal" source ~/.config/neomutt/personal
+
+source ~/.config/neomutt/personal

@@ -1,0 +1,8 @@
+[Unit]
+Description=Sync IMAP folders
+
+[Service]
+ExecStart=/usr/bin/mbsync -a
+
+[Install]
+WantedBy=graphical.target

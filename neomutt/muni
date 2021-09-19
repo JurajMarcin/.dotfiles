@@ -1,0 +1,25 @@
+# Account specific
+
+set my_mail     = "`pass neomutt/muni/mail`"
+set my_pass     = "`pass neomutt/muni/pass`"
+
+color status    black yellow
+set spoolfile   = "+MUNI/INBOX"
+set trash       = "+MUNI/Trash"
+unset record
+set postponed   = "+MUNI/Drafts"
+
+# SMTP
+set smtp_url            = "smtps://$my_mail@smtp.gmail.com"
+set smtp_pass           = "$my_pass"
+set ssl_starttls        = "yes"
+set ssl_force_tls       = "yes"
+set smtp_authenticators = "login"
+
+# Info
+set realname            = "Juraj Marcin"
+unset signature
+set from                = "$my_mail"
+set use_from            = "yes"
+
+# vi: ft=neomuttrc

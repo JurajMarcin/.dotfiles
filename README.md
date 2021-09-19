@@ -20,8 +20,17 @@ Obligatory dotfiles repository for my Arch Linux setup.
     + pulseaudio
     + xbacklight
     + xwallpaper
++ mbsync
+    + pass
 + neovim
     + python-pynvim
++ neomutt
+    + iconv
+    + khard
+    + lynx
+    + pass
+    + urlscan
+    + zathura
 + picom
 + polybar
     + bluez-utils
