@@ -12,7 +12,7 @@ Account personal
 MaildirStore personal-local
 SubFolders Verbatim
 Path ~/Mail/Personal/
-Inbox ~/Mail/Personal/INBOX/
+Inbox ~/Mail/Personal/
 
 Channel personal-drafts
 Far :personal-remote:[Gmail]/Drafts
@@ -73,7 +73,7 @@ Account muni
 MaildirStore muni-local
 SubFolders Verbatim
 Path ~/Mail/MUNI/
-Inbox ~/Mail/MUNI/INBOX/
+Inbox ~/Mail/MUNI/
 
 Channel muni-all
 Far :muni-remote:[Gmail]/"All Mail"

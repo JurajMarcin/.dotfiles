@@ -4,7 +4,7 @@ set my_mail     = "`pass neomutt/muni/mail`"
 set my_pass     = "`pass neomutt/muni/pass`"
 
 color status    black yellow
-set spoolfile   = "+MUNI/INBOX"
+set spoolfile   = "+MUNI"
 set trash       = "+MUNI/Trash"
 unset record
 set postponed   = "+MUNI/Drafts"

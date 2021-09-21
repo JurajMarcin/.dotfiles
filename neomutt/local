@@ -1,0 +1,22 @@
+# Account specific
+
+color status    black white
+set spoolfile   = "+Local"
+unset trash
+unset record
+unset postponed
+
+# SMTP
+unset smtp_url
+unset smtp_pass
+unset ssl_starttls
+unset ssl_force_tls
+unset smtp_authenticators
+
+# Info
+set realname            = "Juraj Marcin"
+unset signature
+set from                = "juraj"
+set use_from            = "yes"
+
+# vi: ft=neomuttrc

@@ -62,7 +62,9 @@ color hdrdefault            bold        white       default
 
 # Sidebar visuals
 
-set sidebar_format  = "%B%* %?F?[%F]? %?N?%N/?%S"
+set sidebar_format  = "%B%* %?F?[%F]? %?N?%N?"
+set sidebar_short_path
+set sidebar_folder_indent
 color sidebar_highlight     underline   default     default
 color sidebar_new           bold        red         default
 color sidebar_unread        bold        brightred   default
@@ -96,6 +98,7 @@ bind index,pager    <esc><esc>  sidebar-open
 
 mailboxes `find ~/Mail -type d -name cur -printf '"%h"\n' | sort | xargs`
 
+folder-hook "Local" source ~/.config/neomutt/local
 folder-hook "MUNI" source ~/.config/neomutt/muni
 folder-hook "Personal" source ~/.config/neomutt/personal
 
