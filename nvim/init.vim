@@ -17,7 +17,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'honza/vim-snippets'
 Plug 'kylef/apiblueprint.vim'
@@ -83,6 +83,7 @@ endif
 syntax on
 set ruler
 set number
+set colorcolumn=+0
 
 let no_buffers_menu=1
 
@@ -134,13 +135,13 @@ highlight ALEInfo ctermbg=DarkBlue
 call ale#Set('c_clangtidy_options', '-std=c99')
 
 " Vimtex
-" let g:tex_flavor = 'latex'
+let g:tex_flavor = 'latex'
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-" call deoplete#custom#var('omni', 'input_patterns', {
-"       \ 'tex': g:vimtex#re#deoplete
-"       \})
+call deoplete#custom#var('omni', 'input_patterns', {
+      \ 'tex': g:vimtex#re#deoplete
+      \})
 
 set nocp
 
