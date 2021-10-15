@@ -136,6 +136,7 @@ call ale#Set('c_clangtidy_options', '-std=c99')
 
 " Vimtex
 let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'zathura'
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
