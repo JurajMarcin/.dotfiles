@@ -46,6 +46,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
 + xorg
 + zsh
     + git
++ zathura
 
 ## Used fonts
 

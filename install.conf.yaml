@@ -54,6 +54,8 @@
     ~/.xprofile: xprofile
     ~/.config/systemd/user/xmodmap.service: systemd/user/xmodmap.service
     ~/.config/systemd/user/xss-lock.service: systemd/user/xss-lock.service
+    # Zathura
+    ~/.config/zathura: zathura
     # Zsh
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
