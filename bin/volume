@@ -13,10 +13,8 @@ fi
 volume=$(pamixer --get-volume)
 mute=$(pamixer --get-mute)
 
-bar=$(seq -s "─" $(($volume / 2)) | sed 's/[0-9]//g')
-
 if [[ "$mute" = "true" ]]; then
-    dunstify -a "bar-notify" -i audio-volume-muted-symbolic.symbolic -r 424242 "$volume% $bar"
+    dunstify -a "bar-notify" -i audio-volume-muted-symbolic.symbolic -r 424242 -h int:value:$volume ""
 else
-    dunstify -a "bar-notify" -i audio-volume-high-symbolic.symbolic -r 424242 "$volume% $bar"
+    dunstify -a "bar-notify" -i audio-volume-high-symbolic.symbolic -r 424242 -h int:volume:$volume ""
 fi
