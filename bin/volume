@@ -16,5 +16,5 @@ mute=$(pamixer --get-mute)
 if [[ "$mute" = "true" ]]; then
     dunstify -a "bar-notify" -i audio-volume-muted-symbolic.symbolic -r 424242 -h int:value:$volume ""
 else
-    dunstify -a "bar-notify" -i audio-volume-high-symbolic.symbolic -r 424242 -h int:volume:$volume ""
+    dunstify -a "bar-notify" -i audio-volume-high-symbolic.symbolic -r 424242 -h int:value:$volume ""
 fi
