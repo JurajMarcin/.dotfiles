@@ -20,12 +20,30 @@ Plug 'preservim/nerdtree'
 Plug 'lervag/vimtex'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'honza/vim-snippets'
-Plug 'kylef/apiblueprint.vim'
 Plug 'tomasr/molokai'
+
+" apiblueprint
+Plug 'kylef/apiblueprint.vim'
 
 " c
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
+
+" haskell
+"" Haskell Bundle
+Plug 'eagletmt/neco-ghc'
+Plug 'dag/vim2hs'
+Plug 'pbrisbin/vim-syntax-shakespeare'
+
+" perl
+"" Perl Bundle
+Plug 'vim-perl/vim-perl'
+Plug 'c9s/perlomni.vim'
+
+" python
+"" Python Bundle
+Plug 'davidhalter/jedi-vim'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 call plug#end()
 
@@ -87,6 +105,12 @@ set colorcolumn=+0
 
 let no_buffers_menu=1
 
+" Better command line completion
+set wildmenu
+
+" mouse support
+set mouse=a
+
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
@@ -113,17 +137,28 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+set title
+set titleold="Terminal"
+set titlestring=%F
+
 " vim-airline
 let g:airline_theme = 'molokai'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
 
 " Ale
 let g:ale_linters = {'python': ['mypy', 'flake8']}
@@ -147,8 +182,38 @@ call deoplete#custom#var('omni', 'input_patterns', {
 set nocp
 
 " c
-autocmd FileType c setlocal tabstop=8 shiftwidth=8 noexpandtab
-autocmd FileType cpp setlocal tabstop=8 shiftwidth=8 noexpandtab
+autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 
 " LaTeX
 autocmd FileType tex setlocal colorcolumn=80 textwidth=80
+
+" haskell
+let g:haskell_conceal_wide = 0
+let g:haskell_multiline_strings = 1
+let g:necoghc_enable_detailed_browse = 1
+autocmd Filetype haskell setlocal omnifunc=necoghc#omnifunc
+
+
+" perl
+
+
+" python
+" vim-python
+augroup vimrc-python
+  autocmd!
+  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
+        \ colorcolumn=79 formatoptions+=croq softtabstop=4 
+        \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+augroup END
+
+" jedi-vim
+let g:jedi#popup_on_dot = 0
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#show_call_signatures = "0"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#smart_auto_mappings = 0
