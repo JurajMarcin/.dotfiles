@@ -7,6 +7,8 @@ zstyle ':vcs_info:*' unstagedstr '●'
 zstyle ':vcs_info:*' formats " %b %c %u"
 zstyle ':vcs_info:*' actionformats " %b (%a) %c %u"
 
+DEFAULT_COLOR=${HOST_COLOR:-green}
+
 prompt_start() {
     echo -n "%K{$1}%F{$2} $3 %F{$1}"
 }
@@ -20,7 +22,7 @@ prompt_end() {
 }
 
 prompt_build() {
-    prompt_start green black "%n@%m"
+    prompt_start ${DEFAULT_COLOR} black "%n@%m"
     prompt_segment blue black "%~"
     echo -n "%(?..$(prompt_segment red black "%?"))"
     echo -n "%1(j.$(prompt_segment yellow black "%j").)"
@@ -28,7 +30,7 @@ prompt_build() {
     [[ -n ${VIRTUAL_ENV} ]] && prompt_segment white black "󰌠 $(basename "$VIRTUAL_ENV")"
     prompt_end
     echo
-    prompt_start green black "%#"
+    prompt_start ${DEFAULT_COLOR} black "%#"
     prompt_end
 }
 

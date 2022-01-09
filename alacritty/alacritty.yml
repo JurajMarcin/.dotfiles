@@ -110,5 +110,5 @@ key_bindings:
 bell:
   # Bell Command
   command:
-    program: paplay
+    program: pw-play
     args: ["/usr/share/sounds/freedesktop/stereo/bell.oga"]

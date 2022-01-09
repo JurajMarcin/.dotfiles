@@ -67,10 +67,10 @@ bindsym $mod+Shift+x exec --no-startup-id "systemctl suspend"
 ## MEDIA ##
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id "volume -i 1"
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "volume -i 10"
-bindsym XF86AudioLowerVolume exec --no-startup-id "volume -d 1"
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "volume -d 10"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "volume +1%"
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "volume +10%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "volume -1%"
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "volume -10%"
 bindsym XF86AudioMute exec --no-startup-id "volume --mute-toggle"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -216,15 +216,15 @@ bindsym $mod+r mode "resize"
 
 # Workspace screens
 workspace $ws1 output primary
-workspace $ws2 output eDP-1 eDP1 eDP-1-1 DP-2
+workspace $ws2 output eDP-1 eDP1 eDP-1-1 DP2
 workspace $ws3 output primary
-workspace $ws4 output eDP-1 eDP1 eDP-1-1 DP-2
+workspace $ws4 output eDP-1 eDP1 eDP-1-1 DP2
 workspace $ws5 output primary
-workspace $ws6 output eDP-1 eDP1 eDP-1-1 DP-2
+workspace $ws6 output eDP-1 eDP1 eDP-1-1 DP2
 workspace $ws7 output primary
-workspace $ws8 output eDP-1 eDP1 eDP-1-1 DP-2
+workspace $ws8 output eDP-1 eDP1 eDP-1-1 DP2
 workspace $ws9 output primary
-workspace $ws10 output eDP-1 eDP1 eDP-1-1 DP-2
+workspace $ws10 output eDP-1 eDP1 eDP-1-1 DP2
 
 # Workspace apps
 assign [class="discord"] $ws2

@@ -28,7 +28,7 @@ font-1 = MaterialDesignIcons:style=Regular:size=14;4
 
 modules-left = powermenu i3 player-mpris-tail
 modules-center = date
-modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio dunst xkeyboard
+modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio dunst mail xkeyboard
 
 tray-position = right
 tray-padding = 0
@@ -198,7 +198,7 @@ interface = enp7s0
 interval = 3.0
 
 format-connected = 󰌘 <label-connected>
-label-connected = %ifname%
+label-connected = %linkspeed%
 
 format-disconnected = 󰌙
 format-disconnected-foreground = ${colors.fg-alt}
@@ -262,6 +262,18 @@ label = %output%
 click-middle = ~/.config/polybar/scripts/player-mpris-tail.py previous
 click-right = ~/.config/polybar/scripts/player-mpris-tail.py next
 click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause
+
+;
+; Communications
+;
+
+[module/mail]
+type = custom/script
+exec = ~/.config/polybar/scripts/mailsync tail -a ~/Mail 󰇮 "%{F#F44336}󰛏%{F-}" "%{F#616161}󱙡%{F-}" 󱋇
+label = %output%
+tail = true
+click-left = ~/.config/polybar/scripts/mailsync sync -a
+click-right = ~/.config/polybar/scripts/mailsync toggle -a
 
 ;
 ; Other Settings

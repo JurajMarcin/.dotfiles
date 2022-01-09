@@ -1,0 +1,52 @@
+#!/bin/bash
+
+ACTION=$1
+MAILBOX=$2
+MAILDIR=$3
+ICON_ON=${4:-Y}
+ICON_NEW=${5:-N}
+ICON_OFF=${6:-N}
+ICON_SYNC=${7:-R}
+
+get_current_icon() {
+    if [ "`systemctl --user is-active "mbsync@$MAILBOX.timer"`" = "active" ]; then
+        if [ "`systemctl --user is-active "mbsync@$MAILBOX.service"`" = "inactive" ]; then
+            if [ -n "`find "$MAILDIR" -type f -path '*new*' -not -path '*Archive*' -print -quit`" ]; then
+                echo $ICON_NEW
+            else
+                echo $ICON_ON
+            fi
+        else
+            echo $ICON_SYNC
+        fi
+    else
+        echo $ICON_OFF
+    fi
+}
+
+case "$ACTION" in
+    tail)
+        get_current_icon
+
+        journalctl --follow --output cat --user --unit "mbsync@$MAILBOX.timer" --unit "mbsync@$MAILBOX.service" \
+                | while read -r; do
+            get_current_icon
+        done
+    ;;
+    show)
+        get_current_icon
+    ;;
+    toggle)
+        if [ "`systemctl --user is-active "mbsync@$MAILBOX.timer"`" = "active" ]; then
+            systemctl --user stop "mbsync@$MAILBOX.timer"
+        else
+            systemctl --user start "mbsync@$MAILBOX.timer"
+        fi
+    ;;
+    sync)
+        systemctl --user start "mbsync@$MAILBOX.service"
+    ;;
+    *)
+        exit 1
+    ;;
+esac

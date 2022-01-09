@@ -1,19 +1,15 @@
 #!/bin/bash
 
 if [[ "$1" = "--mute-toggle" ]]; then
-    if [[ $(pamixer --get-mute) = "true" ]]; then
-        pamixer -u >/dev/null
-    else
-        pamixer -m >/dev/null
-    fi
+    pactl set-sink-mute @DEFAULT_SINK@ toggle >/dev/null
 else
-    pamixer "$@" >/dev/null
+    pactl set-sink-volume @DEFAULT_SINK@ $@ >/dev/null
 fi
 
-volume=$(pamixer --get-volume)
-mute=$(pamixer --get-mute)
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | sed 's/.* \([[:digit:]]\+\)%.*/\1/' | head -n1)
+mute=$(pactl get-sink-mute @DEFAULT_SINK@)
 
-if [[ "$mute" = "true" ]]; then
+if [[ "$mute" = "Mute: yes" ]]; then
     dunstify -a "bar-notify" -i audio-volume-muted-symbolic.symbolic -r 424242 -h int:value:$volume ""
 else
     dunstify -a "bar-notify" -i audio-volume-high-symbolic.symbolic -r 424242 -h int:value:$volume ""

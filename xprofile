@@ -3,3 +3,7 @@
 # XIM
 export GTK_IM_MODULE=xim
 export XMODIFIERS="@im=none"
+
+# Theming
+export GTK_THEME=Adwaita:dark
+export QT_STYLE_OVERRIDE=adwaita-dark

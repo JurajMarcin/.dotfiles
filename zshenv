@@ -11,11 +11,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # Misc
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# Theming
-export GTK_THEME=Adwaita:dark
-export QT_STYLE_OVERRIDE=adwaita-dark
-
 # Programs
 export EDITOR=nvim
 export VISUAL=nvim
 export DIFFPROG="nvim -d"
+
+[ -f ~/.zshenv.local ] && source ~/.zshenv.local

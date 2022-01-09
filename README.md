@@ -5,7 +5,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
 ## Programs (and their additional dependencies)
 
 + alacritty
-    + libpulse (paplay)
+    + pipewire (pw-play)
 + dunst
 + flameshot
 + fontconfig
@@ -14,10 +14,9 @@ Obligatory dotfiles repository for my Arch Linux setup.
         + gcr
 + i3-gaps
     + i3lock
-    + pamixer
     + pavucontrol
     + playerctl
-    + pulseaudio
+    + libpulse (pactl)
     + xbacklight
     + xwallpaper
 + mbsync
@@ -27,6 +26,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
     + python-pynvim
 + neomutt
     + iconv
+    + imv
     + khard
     + lynx
     + pass
@@ -36,7 +36,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
 + polybar
     + bluez-utils
     + pavucontrol
-    + pulseaudio
+    + libpulse
     + python-dbus
     + python-gobject
 + rofi

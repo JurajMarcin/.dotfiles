@@ -1,6 +1,10 @@
 # vim: ft=tmux
 
+%if #{==:#{HOST_COLOR},}
 PRI_BG=green
+%else
+PRI_BG="$HOST_COLOR"
+%endif
 PRI_FG=black
 SEC_BG=black
 SEC_FG=white

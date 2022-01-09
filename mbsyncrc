@@ -14,6 +14,13 @@ SubFolders Verbatim
 Path ~/Mail/Personal/
 Inbox ~/Mail/Personal/
 
+Channel personal-all
+Far :personal-remote:[Gmail]/"All Mail"
+Near :personal-local:Archive
+Create Near
+Sync Pull
+SyncState *
+
 Channel personal-drafts
 Far :personal-remote:[Gmail]/Drafts
 Near :personal-local:Drafts
@@ -32,12 +39,6 @@ Near :personal-local:Spam
 Create Near
 SyncState *
 
-Channel personal-starred
-Far :personal-remote:[Gmail]/Starred
-Near :personal-local:Starred
-Create Near
-SyncState *
-
 Channel personal-trash
 Far :personal-remote:[Gmail]/Trash
 Near :personal-local:Trash
@@ -47,15 +48,15 @@ SyncState *
 Channel personal-others
 Far :personal-remote:
 Near :personal-local:
-Patterns * ![Gmail]* !Drafts !Sent !Spam !Starred !Trash
+Patterns * ![Gmail]* !Archive !Drafts !Sent !Spam !Trash
 Create Both
 SyncState *
 
 Group personal
+Channel personal-all
 Channel personal-drafts
 Channel personal-sent
 Channel personal-spam
-Channel personal-starred
 Channel personal-trash
 Channel personal-others
 
@@ -79,6 +80,7 @@ Channel muni-all
 Far :muni-remote:[Gmail]/"All Mail"
 Near :muni-local:Archive
 Create Near
+Sync Pull
 SyncState *
 
 Channel muni-drafts
@@ -99,12 +101,6 @@ Near :muni-local:Spam
 Create Near
 SyncState *
 
-Channel muni-starred
-Far :muni-remote:[Gmail]/Starred
-Near :muni-local:Starred
-Create Near
-SyncState *
-
 Channel muni-trash
 Far :muni-remote:[Gmail]/Trash
 Near :muni-local:Trash
@@ -114,7 +110,7 @@ SyncState *
 Channel muni-others
 Far :muni-remote:
 Near :muni-local:
-Patterns * ![Gmail]* !Archive !Drafts !Sent !Spam !Starred !Trash
+Patterns * ![Gmail]* !Archive !Drafts !Sent !Spam !Trash
 Create Both
 SyncState *
 
@@ -123,6 +119,5 @@ Channel muni-all
 Channel muni-drafts
 Channel muni-sent
 Channel muni-spam
-Channel muni-starred
 Channel muni-trash
 Channel muni-others

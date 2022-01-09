@@ -252,8 +252,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 " c
-autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab textwidth=80
+autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab textwidth=80
 
 " LaTeX
 autocmd FileType tex setlocal colorcolumn=80 textwidth=80

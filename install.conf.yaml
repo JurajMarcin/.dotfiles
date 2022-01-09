@@ -10,6 +10,8 @@
     - ~/Mail/MUNI
 
 - link:
+    # Environment vars
+    ~/.config/environment.d: environment.d
     # Misc scripts
     ~/.local/bin/backlight: bin/backlight
     ~/.local/bin/lock: bin/lock
@@ -27,10 +29,12 @@
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     # i3-gaps
     ~/.config/i3: i3
+    # imapnotify
+    ~/.config/imapnotify: imapnotify
     # Mbsync
     ~/.mbsyncrc: mbsyncrc
-    ~/.config/systemd/user/mbsync.service: systemd/user/mbsync.service
-    ~/.config/systemd/user/mbsync.timer: systemd/user/mbsync.timer
+    ~/.config/systemd/user/mbsync@.service: systemd/user/mbsync@.service
+    ~/.config/systemd/user/mbsync@.timer: systemd/user/mbsync@.timer
     # Neovim
     ~/.config/nvim: nvim
     # Neomutt
@@ -71,9 +75,9 @@
     # Flameshot
     - [systemctl --user enable --now flameshot.service, Enabling flameshot service]
     # Mbsync
-    - [systemctl --user enable --now mbsync.timer, Enabling mbsync timer]
+    - [systemctl --user enable --now mbsync@-a.timer, Enabling mbsync timer]
     # Neovim
-    - [./.install-vim-plug.sh, Installing vim plug for neovim]
+    - [./install-vim-plug.sh, Installing vim plug for neovim]
     - [nvim +PlugInstall +PlugClean +PlugUpgrade +PlugUpdate +qa, Installing neovim plugins]
     - [nvim +"CocInstall coc-bibtex coc-vimtex coc-sh coc-rome coc-pyright coc-perl coc-json coc-clangd" +qa, Installing coc-nvim plugins]
     # Picom
@@ -81,5 +85,10 @@
     # X utils
     - [systemctl --user enable --now xmodmap.service, Enabling xmodmap service]
     - [systemctl --user enable --now xss-lock.service, Enabling xss-lock service]
+    - command: ./setup-host-color.sh
+      description: Setup host color
+      stdin: true
+      stdout: true
+      stderr: true
 
 # vi: set tabwidth=4 shiftwidth=4
