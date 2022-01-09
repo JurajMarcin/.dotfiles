@@ -1,10 +1,3 @@
-# Gnome Keyring
-gnome-keyring-daemon --start >/dev/null
-
-# GnuPG
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
-
 # User scripts
 export PATH="$HOME/.local/bin:$PATH"
 
