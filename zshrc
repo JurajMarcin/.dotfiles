@@ -18,9 +18,4 @@ source ~/.zsh/keys.zsh
 source ~/.zsh/prompt.zsh
 source ~/.zsh/aliases.zsh
 
-# Update GPG TTY
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
-
-# Initialize Node Version manager
-source /usr/share/nvm/init-nvm.sh
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

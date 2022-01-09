@@ -4,62 +4,12 @@
 
 - clean: ['~']
 
-- create:
-    - ~/.local/bin
-    - ~/Mail/Personal
-    - ~/Mail/MUNI
-
 - link:
-    # Environment vars
-    ~/.config/environment.d: environment.d
-    # Misc scripts
-    ~/.local/bin/backlight: bin/backlight
-    ~/.local/bin/lock: bin/lock
-    ~/.local/bin/volume: bin/volume
-    # Alacritty
-    ~/.config/alacritty: alacritty
-    # Dunst
-    ~/.config/dunst: dunst
-    ~/.config/systemd/user/dunst.service: systemd/user/dunst.service
-    # Flameshot
-    ~/.config/systemd/user/flameshot.service: systemd/user/flameshot.service
-    # Fonts
-    ~/.config/fontconfig: fontconfig
-    # GnuPG
-    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
-    # i3-gaps
-    ~/.config/i3: i3
-    # imapnotify
-    ~/.config/imapnotify: imapnotify
-    # Mbsync
-    ~/.mbsyncrc: mbsyncrc
-    ~/.config/systemd/user/mbsync@.service: systemd/user/mbsync@.service
-    ~/.config/systemd/user/mbsync@.timer: systemd/user/mbsync@.timer
     # Neovim
     ~/.config/nvim: nvim
-    # Neomutt
-    ~/.config/neomutt: neomutt
-    # Picom
-    ~/.config/picom.conf: picom.conf
-    ~/.config/systemd/user/picom.service: systemd/user/picom.service
-    # Polybar
-    ~/.config/polybar: polybar
-    ~/.config/systemd/user/polybar.service: systemd/user/polybar.service
-    # Rofi menu
-    ~/.config/rofi: rofi
-    # Systemd
-    ~/.config/systemd/user/graphical.target: systemd/user/graphical.target
     # tmux
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
-    # X utils
-    ~/.XCompose: XCompose
-    ~/.Xmodmap: Xmodmap
-    ~/.xprofile: xprofile
-    ~/.config/systemd/user/xmodmap.service: systemd/user/xmodmap.service
-    ~/.config/systemd/user/xss-lock.service: systemd/user/xss-lock.service
-    # Zathura
-    ~/.config/zathura: zathura
     # Zsh
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
@@ -68,23 +18,10 @@
 - shell:
     # Update dotbot submodule
     - [git submodule update --init --recursive, Installing submodules]
-    # Reload systemd daeomon
-    - [systemctl --user daemon-reload, Reloading systemd daemon]
-    # Dunst
-    - [systemctl --user enable --now dunst.service, Enabling dunst service]
-    # Flameshot
-    - [systemctl --user enable --now flameshot.service, Enabling flameshot service]
-    # Mbsync
-    - [systemctl --user enable --now mbsync@-a.timer, Enabling mbsync timer]
     # Neovim
     - [./install-vim-plug.sh, Installing vim plug for neovim]
     - [nvim +PlugInstall +PlugClean +PlugUpgrade +PlugUpdate +qa, Installing neovim plugins]
     - [nvim +"CocInstall coc-bibtex coc-vimtex coc-sh coc-rome coc-pyright coc-perl coc-json coc-clangd" +qa, Installing coc-nvim plugins]
-    # Picom
-    - [systemctl --user enable --now picom.service, Enabling picom service]
-    # X utils
-    - [systemctl --user enable --now xmodmap.service, Enabling xmodmap service]
-    - [systemctl --user enable --now xss-lock.service, Enabling xss-lock service]
     - command: ./setup-host-color.sh
       description: Setup host color
       stdin: true

@@ -1,0 +1,27 @@
+- defaults:
+    link:
+        relink: true
+
+- clean: ['~']
+
+- create:
+    - ~/Mail/Personal
+    - ~/Mail/MUNI
+
+- link:
+    # Mbsync
+    ~/.mbsyncrc: mbsyncrc
+    ~/.config/systemd/user/mbsync@.service: systemd/user/mbsync@.service
+    ~/.config/systemd/user/mbsync@.timer: systemd/user/mbsync@.timer
+    # Neomutt
+    ~/.config/neomutt: neomutt
+
+- shell:
+    # Update dotbot submodule
+    - [git submodule update --init --recursive, Installing submodules]
+    # Reload systemd daeomon
+    - [systemctl --user daemon-reload, Reloading systemd daemon]
+    # Mbsync
+    - [systemctl --user enable --now mbsync@-a.timer, Enabling mbsync timer]
+
+# vi: set tabwidth=4 shiftwidth=4
