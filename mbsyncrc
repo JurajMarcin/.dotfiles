@@ -121,3 +121,27 @@ Channel muni-sent
 Channel muni-spam
 Channel muni-trash
 Channel muni-others
+
+# Public mail account
+IMAPAccount public
+Host mail.jurajmarcin.com
+UserCmd "pass neomutt/public/mail"
+PassCmd "pass neomutt/public/pass"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore public-remote
+Account public
+
+MaildirStore public-local
+SubFolders Verbatim
+Path ~/Mail/Public/
+Inbox ~/Mail/Public/
+
+Channel public
+Far :public-remote:
+Near :public-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *

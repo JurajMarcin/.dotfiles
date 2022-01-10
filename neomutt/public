@@ -1,0 +1,28 @@
+# Account specific
+
+set my_mail     = "`pass neomutt/public/mail`"
+set my_pass     = "`pass neomutt/public/pass`"
+
+color status    black red
+set spoolfile   = "+Public"
+set trash       = "+Public/Trash"
+set record      = "+Public/Sent"
+set postponed   = "+Public/Drafts"
+
+# SMTP
+set smtp_url            = "smtps://$my_mail@mail.jurajmarcin.com"
+set smtp_pass           = "$my_pass"
+set ssl_starttls        = "yes"
+set ssl_force_tls       = "yes"
+set smtp_authenticators = "login"
+
+# Info
+set realname            = "Juraj Marcin"
+unset signature
+set from                = "$my_mail"
+set use_from            = "yes"
+
+# Archive
+macro index A ":set confirmappend=no\n<save-message>=Public/Archive<enter>:set confirmappend=no\n"
+
+# vi: ft=neomuttrc

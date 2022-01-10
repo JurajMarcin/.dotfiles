@@ -22,4 +22,7 @@ unset signature
 set from                = "$my_mail"
 set use_from            = "yes"
 
+# Archive
+bind index          A       purge-message
+
 # vi: ft=neomuttrc

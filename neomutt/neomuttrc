@@ -82,7 +82,6 @@ macro index,pager   A   "<pipe-message>khard add-email<return>" \
 # General
 bind index          d       delete-message
 bind index          D       undelete-message
-bind index          A       purge-message
 bind index          U       toggle-new
 bind index          I       flag-message
 bind index,pager    \Cr     sync-mailbox
@@ -91,15 +90,16 @@ bind pager          <down>  next-line
 macro pager         \Cb     |urlscan\n
 
 # Sidebar
-bind index,pager    B           sidebar-toggle-visible
-bind index,pager    <left>      sidebar-prev
-bind index,pager    <right>     sidebar-next
-bind index,pager    <esc><esc>  sidebar-open
+bind index,pager    B       sidebar-toggle-visible
+bind index,pager    K       sidebar-prev
+bind index,pager    J       sidebar-next
+bind index,pager    L       sidebar-open
 
 mailboxes `find ~/Mail -type d -name cur -printf '"%h"\n' | sort | xargs`
 
 folder-hook "Local" source ~/.config/neomutt/local
 folder-hook "MUNI" source ~/.config/neomutt/muni
 folder-hook "Personal" source ~/.config/neomutt/personal
+folder-hook "Public" source ~/.config/neomutt/public
 
 source ~/.config/neomutt/personal
