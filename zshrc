@@ -1,7 +1,7 @@
 # The following lines were added by compinstall
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:]}={[:upper:]}'
-zstyle :compinstall filename '/home/juraj/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -18,4 +18,6 @@ source ~/.zsh/keys.zsh
 source ~/.zsh/prompt.zsh
 source ~/.zsh/aliases.zsh
 
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi

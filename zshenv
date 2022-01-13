@@ -9,4 +9,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export DIFFPROG="nvim -d"
 
-[ -f ~/.zshenv.local ] && source ~/.zshenv.local
+if [ -f ~/.zshenv.local ]; then
+    source ~/.zshenv.local
+fi
