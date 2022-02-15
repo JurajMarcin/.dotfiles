@@ -13,7 +13,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
     + pinentry
         + gcr
 + i3-gaps
-    + i3lock
+    + xsecurelock
     + pavucontrol
     + playerctl
     + libpulse (pactl)

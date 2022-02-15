@@ -75,8 +75,8 @@ color compose header        bold        default     default
 
 # Contact managament
 
-set query_command   =   "khard email --parsable %s"
-macro index,pager   A   "<pipe-message>khard add-email<return>" \
+set query_command   =   "khard email --parsable '%s'"
+macro index,pager   a   "<pipe-message>khard add-email<return>" \
                         "Add this sender to khard"
 
 # General
@@ -88,6 +88,7 @@ bind index,pager    \Cr     sync-mailbox
 bind pager          <up>    previous-line
 bind pager          <down>  next-line
 macro pager         \Cb     |urlscan\n
+bind editor         <Tab>   complete-query
 
 # Sidebar
 bind index,pager    B       sidebar-toggle-visible

@@ -9,6 +9,8 @@
     - ~/Mail/MUNI
 
 - link:
+    # Khard
+    ~/.config/khard: khard
     # Mbsync
     ~/.mbsyncrc: mbsyncrc
     ~/.config/systemd/user/mbsync@.service: systemd/user/mbsync@.service

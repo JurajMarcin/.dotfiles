@@ -1,5 +1,7 @@
 #!/bin/bash
 
-image="$HOME/.local/share/wallpapers/lock/$(ls ~/.local/share/wallpapers/lock/ | sort -R | tail -n1)"
+export XSECURELOCK_SAVER=saver_mpv
+export XSECURELOCK_LIST_VIDEOS_COMMAND="find ~/.local/share/wallpapers/lock -type f"
+export XSECURELOCK_IMAGE_DURATION_SECONDS=15
 
-exec i3lock --nofork --tiling --image="$image"
+exec xsecurelock
