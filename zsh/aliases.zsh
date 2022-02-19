@@ -8,7 +8,7 @@ alias m="mv -iv"
 alias c="cp -riv"
 alias d="rm -Iv"
 
-alias sunvim="sudo -E nvim"
+alias sunvim="sudo nvim"
 alias sum="sudo mv -iv"
 alias suc="sudo cp -riv"
 alias sud="sudo rm -iv"
