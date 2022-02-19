@@ -27,7 +27,7 @@ prompt_end() {
 }
 
 prompt_build() {
-    prompt_start ${DEFAULT_COLOR} black "%n@%m"
+    prompt_start ${DEFAULT_COLOR} black "%n@%M"
     prompt_segment blue black "%~"
     echo -n "%(?..$(prompt_segment red black "%?"))"
     echo -n "%1(j.$(prompt_segment yellow black "%j").)"
