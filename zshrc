@@ -7,6 +7,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+source ~/.zsh/timewarrior/timewarrior.plugin.zsh
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
