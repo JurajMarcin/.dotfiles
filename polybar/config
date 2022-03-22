@@ -269,11 +269,11 @@ click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause
 
 [module/mail]
 type = custom/script
-exec = ~/.config/polybar/scripts/mailsync tail -a ~/Mail 󰇮 "%{F#F44336}󰛏%{F-}" "%{F#616161}󱙡%{F-}" 󱋇
+exec = ~/.config/polybar/scripts/mailsync tail --icon-on 󰇮 --icon-off 󱙡  --icon-sync 󱋇 --color-new "#F44336" -- -a ~/Mail
 label = %output%
 tail = true
-click-left = ~/.config/polybar/scripts/mailsync sync -a
-click-right = ~/.config/polybar/scripts/mailsync toggle -a
+click-left = ~/.config/polybar/scripts/mailsync -- sync -a
+click-right = ~/.config/polybar/scripts/mailsync -- toggle -a
 
 ;
 ; Other Settings

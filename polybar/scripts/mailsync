@@ -1,26 +1,62 @@
 #!/bin/bash
 
+ICON_ON=Y
+ICON_OFF=N
+ICON_SYNC=S
+
+eval set -- `getopt --longoptions "icon-on:,icon-off:,icon-sync:,color-new:" -- "u:d:s:n:" "$@"`
+
+while true; do
+    case "$1" in
+        "-u"|"--icon-on")
+            ICON_ON="$2"
+            shift 2
+            ;;
+        "-d"|"--icon-off")
+            ICON_OFF="$2"
+            shift 2
+            ;;
+        "-s"|"--icon-sync")
+            ICON_SYNC="$2"
+            shift 2
+            ;;
+        "-n"|"--color-new")
+            COLOR_NEW="$2"
+            shift 2
+            ;;
+        "--")
+            shift
+            break
+            ;;
+    esac
+done
+
 ACTION=$1
 MAILBOX=$2
 MAILDIR=$3
-ICON_ON=${4:-Y}
-ICON_NEW=${5:-N}
-ICON_OFF=${6:-N}
-ICON_SYNC=${7:-R}
 
 get_current_icon() {
-    if [ "`systemctl --user is-active "mbsync@$MAILBOX.timer"`" = "active" ]; then
-        if [ "`systemctl --user is-active "mbsync@$MAILBOX.service"`" = "inactive" ]; then
-            if [ -n "`find "$MAILDIR" -type f -path '*new*' -not -path '*Archive*' -print -quit`" ]; then
-                echo $ICON_NEW
-            else
-                echo $ICON_ON
-            fi
-        else
-            echo $ICON_SYNC
-        fi
+
+    if [ "`find "$MAILDIR" -type f -not -name '*2,*S*' -not -name '.*' -not -path '*Archive*' | wc -l`" -ne 0 ]; then
+        color="$COLOR_NEW"
     else
-        echo $ICON_OFF
+        color=""
+    fi
+
+    if [ "`systemctl --user is-active "mbsync@$MAILBOX.timer"`" = "active" ]; then
+        icon="$ICON_ON"
+    else
+        icon="$ICON_OFF"
+    fi
+
+    if [ ! "`systemctl --user is-active "mbsync@$MAILBOX.service"`" = "inactive" ]; then
+        icon="$ICON_SYNC"
+    fi
+
+    if [ -n "$color" ]; then
+        echo "%{F$color}$icon%{F-}"
+    else
+        echo "$icon"
     fi
 }
 
