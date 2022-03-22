@@ -90,7 +90,7 @@ endif
 
 syntax on
 set ruler
-set number relativenumber
+set number
 set colorcolumn=+0
 
 let no_buffers_menu=1
