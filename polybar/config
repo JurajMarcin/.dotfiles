@@ -28,7 +28,7 @@ font-1 = MaterialDesignIcons:style=Regular:size=14;4
 
 modules-left = powermenu i3 player-mpris-tail
 modules-center = date
-modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio dunst mail xkeyboard
+modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio dunst mail lock xkeyboard
 
 tray-position = right
 tray-padding = 0
@@ -187,6 +187,13 @@ interval = 5
 date = %a %d/%m
 time = %R
 label = %date% %time%
+
+[module/lock]
+type = custom/script
+exec = ~/.config/polybar/scripts/systemctl tail xss-lock.service --icon-on 󰌾 --icon-off 󱙱
+label = %output%
+tail = true
+click-left = ~/.config/polybar/scripts/systemctl toggle xss-lock.service
 
 ;
 ; Networking
