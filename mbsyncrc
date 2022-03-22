@@ -18,6 +18,7 @@ Channel personal-all
 Far :personal-remote:[Gmail]/"All Mail"
 Near :personal-local:Archive
 Create Near
+Expunge Near
 Sync Pull
 SyncState *
 
@@ -25,31 +26,44 @@ Channel personal-drafts
 Far :personal-remote:[Gmail]/Drafts
 Near :personal-local:Drafts
 Create Near
+Expunge Near
 SyncState *
 
 Channel personal-sent
 Far :personal-remote:[Gmail]/"Sent Mail"
 Near :personal-local:Sent
 Create Near
+Expunge Near
 SyncState *
 
 Channel personal-spam
 Far :personal-remote:[Gmail]/Spam
 Near :personal-local:Spam
 Create Near
+Expunge Near
+SyncState *
+
+Channel personal-starred
+Far :personal-remote:[Gmail]/Starred
+Near :personal-local:Starred
+Create Near
+Expunge Near
+Sync Pull
 SyncState *
 
 Channel personal-trash
 Far :personal-remote:[Gmail]/Trash
 Near :personal-local:Trash
 Create Near
+Expunge Near
 SyncState *
 
 Channel personal-others
 Far :personal-remote:
 Near :personal-local:
-Patterns * ![Gmail]* !Archive !Drafts !Sent !Spam !Trash
+Patterns * ![Gmail]* !Archive !Drafts !Sent !Spam !Starred !Trash
 Create Both
+Expunge Near
 SyncState *
 
 Group personal
@@ -57,6 +71,7 @@ Channel personal-all
 Channel personal-drafts
 Channel personal-sent
 Channel personal-spam
+Channel personal-starred
 Channel personal-trash
 Channel personal-others
 
@@ -80,6 +95,7 @@ Channel muni-all
 Far :muni-remote:[Gmail]/"All Mail"
 Near :muni-local:Archive
 Create Near
+Expunge Near
 Sync Pull
 SyncState *
 
@@ -87,31 +103,44 @@ Channel muni-drafts
 Far :muni-remote:[Gmail]/Drafts
 Near :muni-local:Drafts
 Create Near
+Expunge Near
 SyncState *
 
 Channel muni-sent
 Far :muni-remote:[Gmail]/"Sent Mail"
 Near :muni-local:Sent
 Create Near
+Expunge Near
 SyncState *
 
 Channel muni-spam
 Far :muni-remote:[Gmail]/Spam
 Near :muni-local:Spam
 Create Near
+Expunge Near
+SyncState *
+
+Channel muni-starred
+Far :muni-remote:[Gmail]/Starred
+Near :muni-local:Starred
+Create Near
+Expunge Near
+Sync Pull
 SyncState *
 
 Channel muni-trash
 Far :muni-remote:[Gmail]/Trash
 Near :muni-local:Trash
 Create Near
+Expunge Near
 SyncState *
 
 Channel muni-others
 Far :muni-remote:
 Near :muni-local:
-Patterns * ![Gmail]* !Archive !Drafts !Sent !Spam !Trash
+Patterns * ![Gmail]* !Archive !Drafts !Sent !Spam !Starred !Trash
 Create Both
+Expunge Near
 SyncState *
 
 Group muni
@@ -119,6 +148,7 @@ Channel muni-all
 Channel muni-drafts
 Channel muni-sent
 Channel muni-spam
+Channel muni-starred
 Channel muni-trash
 Channel muni-others
 

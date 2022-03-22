@@ -104,6 +104,14 @@ bind index,pager    \Cj         sidebar-next
 bind index,pager    <C-left>    sidebar-open
 bind index,pager    \Cl         sidebar-open
 
+set sidebar_new_mail_only
+sidebar_whitelist `find ~/Mail -type d -name cur \
+    -not -path '*2019*' \
+    -not -path '*2020*' \
+    -not -path '*2021*' \
+    -not -path '*Testy-MAT*' \
+    -printf '"%h"\n' | sort | xargs`
+
 mailboxes `find ~/Mail -type d -name cur -printf '"%h"\n' | sort | xargs`
 
 folder-hook "Local" source ~/.config/neomutt/local
