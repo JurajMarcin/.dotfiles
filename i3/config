@@ -15,7 +15,7 @@ set $ws10 "10"
 
 #### STYLE ####
 
-font xft:Roboto 12
+font xft:Victor Mono Bold 12
 
 # Center title
 title_align center
@@ -234,6 +234,9 @@ workspace $ws10 output eDP-1 eDP1 eDP-1-1 DP2
 # Workspace apps
 assign [class="discord"] $ws2
 assign [class="ferdi"] $ws2
+assign [class="Ferdi"] $ws2
+assign [title="ferdi"] $ws2
+assign [title="Ferdi"] $ws2
 assign [class="zoom"] $ws4
 
 # Set Python Turtle to floating

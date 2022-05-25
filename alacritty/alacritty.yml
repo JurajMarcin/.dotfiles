@@ -2,8 +2,8 @@
 font:
   # Normal (roman) font face
   normal:
-    family: Source Code Pro
-    style: Regular
+    family: Victor Mono
+    style: Medium
 
   # Bold font face
   bold:
@@ -11,7 +11,7 @@ font:
 
   # Italic font face
   italic:
-    style: Italic
+    style: Medium Italic
 
   # Bold italic font face
   bold_italic:
