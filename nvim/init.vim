@@ -14,7 +14,7 @@ Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
-Plug 'sheerun/vim-polyglot', { 'tag': 'v4.17.0' }
+Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'honza/vim-snippets'
 Plug 'tomasr/molokai'
@@ -90,7 +90,7 @@ endif
 
 syntax on
 set ruler
-set number
+set number relativenumber
 set colorcolumn=+0
 
 let no_buffers_menu=1
@@ -274,9 +274,6 @@ augroup END
 " Vimtex
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_compiler_latexmk = {
-            \ 'build_dir' : 'build',
-            \}
 
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0

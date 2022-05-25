@@ -3,6 +3,8 @@ zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:]}={[:upper:]}'
 zstyle :compinstall filename "$HOME/.zshrc"
 
+export fpath=(~/.local/share/zsh/site-functions/ $fpath)
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
