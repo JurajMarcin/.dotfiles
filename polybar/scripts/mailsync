@@ -49,7 +49,8 @@ get_current_icon() {
         icon="$ICON_OFF"
     fi
 
-    if [ ! "`systemctl --user is-active "mbsync@$MAILBOX.service"`" = "inactive" ]; then
+    service_status="`systemctl --user is-active "mbsync@$MAILBOX.service"`"
+    if [ "$service_status" = "active" -o "$service_status" = "activating" ]; then
         icon="$ICON_SYNC"
     fi
 

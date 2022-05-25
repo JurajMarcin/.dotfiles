@@ -154,7 +154,7 @@ Channel muni-others
 
 # Public mail account
 IMAPAccount public
-Host mail.jurajmarcin.com
+Host mx.jurajmarcin.com
 UserCmd "pass neomutt/public/mail"
 PassCmd "pass neomutt/public/pass"
 SSLType IMAPS

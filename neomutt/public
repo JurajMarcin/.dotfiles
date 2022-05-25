@@ -10,7 +10,7 @@ set record      = "+Public/Sent"
 set postponed   = "+Public/Drafts"
 
 # SMTP
-set smtp_url            = "smtps://$my_mail@mail.jurajmarcin.com"
+set smtp_url            = "smtps://$my_mail@mx.jurajmarcin.com"
 set smtp_pass           = "$my_pass"
 set ssl_starttls        = "yes"
 set ssl_force_tls       = "yes"

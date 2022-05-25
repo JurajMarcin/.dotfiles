@@ -18,7 +18,7 @@ set smtp_authenticators = "login"
 
 # Info
 set realname            = "Juraj Marcin"
-unset signature
+set signature           = "~/.config/neomutt/muni.signature"
 set from                = "$my_mail"
 set use_from            = "yes"
 
