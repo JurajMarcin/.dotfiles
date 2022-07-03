@@ -17,7 +17,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'honza/vim-snippets'
-Plug 'tomasr/molokai'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " apiblueprint
@@ -102,7 +102,8 @@ set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 
-colorscheme molokai
+set background=dark
+colorscheme PaperColor
 let g:rehash256 = 1
 
 " IndentLine
@@ -128,7 +129,7 @@ set titleold="Terminal"
 set titlestring=%F
 
 " vim-airline
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'papercolor'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1

@@ -12,3 +12,5 @@ alias sunvim="sudo nvim"
 alias sum="sudo mv -iv"
 alias suc="sudo cp -riv"
 alias sud="sudo rm -iv"
+
+alias wine32="WINEARCH=win32 WINEPREFIX=~/.wine32"
