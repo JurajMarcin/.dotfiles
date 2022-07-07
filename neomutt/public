@@ -3,7 +3,7 @@
 set my_mail     = "`pass neomutt/public/mail`"
 set my_pass     = "`pass neomutt/public/pass`"
 
-color status    black red
+color status    black white
 set spoolfile   = "+Public"
 set trash       = "+Public/Trash"
 set record      = "+Public/Sent"

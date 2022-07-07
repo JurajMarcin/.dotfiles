@@ -2,7 +2,7 @@
 Description=Launch Picom compositor with user config
 
 [Service]
-ExecStart=/usr/bin/picom --config /home/juraj/.config/picom.conf
+ExecStart=/usr/bin/picom --config %h/.config/picom.conf
 
 [Install]
 WantedBy=graphical.target

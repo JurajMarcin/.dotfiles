@@ -1,6 +1,6 @@
 # Account specific
 
-color status    black white
+color status    black cyan
 set spoolfile   = "+Local"
 unset trash
 unset record

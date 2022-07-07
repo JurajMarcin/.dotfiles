@@ -2,7 +2,7 @@
 Description=Launch XModmap service
 
 [Service]
-ExecStart=/usr/bin/xmodmap /home/juraj/.Xmodmap
+ExecStart=/usr/bin/xmodmap %h/.Xmodmap
 
 [Install]
 WantedBy=graphical.target
