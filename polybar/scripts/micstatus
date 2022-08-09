@@ -1,0 +1,93 @@
+#!/bin/bash
+#
+# Author: Juraj Marcin <juraj@jurajmarcin.com>
+#
+# Usage ./micstatus [OPTIONS] ACTION [SOURCE]
+#
+# Options:
+#
+#   --icon-unmuted ICON
+#       icon for unmuted mic (default: Y)
+#
+#   --icon-muted ICON
+#       icon for muted mic (default: Y)
+#
+#   --color-unmuted HEX_COLOR
+#       color for unmuted mic (default: none)
+#
+#   --color-muted HEX_COLOR
+#       color for muted mic (default: none)
+#
+# Actions:
+#
+#   toggle
+#       toggle mic mute
+#
+#   tail
+#       tail mic status
+
+ICON_UNMUTED=Y
+ICON_MUTED=N
+COLOR_UNMUTED=''
+COLOR_MUTED=''
+
+eval set -- `getopt --longoptions "icon-muted:,icon-unmuted:,color-muted:,color-unmuted:" -- "" "$@"`
+
+while true; do
+    case "$1" in
+        "--icon-unmuted")
+            ICON_UNMUTED="$2"
+            shift 2
+            ;;
+        "--icon-muted")
+            ICON_MUTED="$2"
+            shift 2
+            ;;
+        "--color-unmuted")
+            COLOR_UNMUTED="$2"
+            shift 2
+            ;;
+        "--color-muted")
+            COLOR_MUTED="$2"
+            shift 2
+            ;;
+        "--")
+            shift
+            break
+            ;;
+    esac
+done
+
+ACTION=${1:-tail}
+SOURCE=${2:-@DEFAULT_SOURCE@}
+
+mic_status() {
+    status=$(pactl get-source-mute "$SOURCE")
+
+    if [ "$status" = 'Mute: no' ]; then
+        icon="$ICON_UNMUTED"
+        color="$COLOR_UNMUTED"
+    else
+        icon="$ICON_MUTED"
+        color="$COLOR_MUTED"
+    fi
+
+    if [ -n "$color" ]; then
+        echo "%{F$color}$icon%{F-}"
+    else
+        echo "$icon"
+    fi
+}
+
+case "$ACTION" in
+    tail)
+        mic_status
+        pactl subscribe | while read -r; do
+            mic_status
+        done
+        ;;
+    toggle)
+        pactl set-source-mute "$SOURCE" toggle
+        mic_status
+        ;;
+esac

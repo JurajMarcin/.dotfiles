@@ -28,7 +28,7 @@ font-1 = MaterialDesignIcons:style=Regular:size=14;4
 
 modules-left = powermenu i3 player-mpris-tail
 modules-center = date
-modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio dunst mail lock xkeyboard
+modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio mic dunst mail lock xkeyboard
 
 tray-position = right
 tray-padding = 0
@@ -254,6 +254,13 @@ ramp-volume-3 = 󰕾
 ramp-volume-4 = 󰕾
 
 click-right = pavucontrol
+
+[module/mic]
+type = custom/script
+exec = ~/.config/polybar/scripts/micstatus --icon-unmuted 󰍬 --icon-muted 󰍭  tail
+tail = true
+click-left = ~/.config/polybar/scripts/micstatus toggle
+label = "%output%"
 
 [module/dunst]
 type = custom/script
