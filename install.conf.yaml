@@ -94,4 +94,12 @@
     - [systemctl --user enable --now xmodmap.service, Enabling xmodmap service]
     - [systemctl --user enable --now xss-lock.service, Enabling xss-lock service]
 
+    # -- System wide configurations --
+    # Bluetoothctl
+    - command: sudo nvim -d _system/bluetooth/main.conf /etc/bluetooth/main.conf
+      description: Apply bluetoothctl
+      stdin: true
+      stdout: true
+      stderr: true
+
 # vi: set tabwidth=4 shiftwidth=4
