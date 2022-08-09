@@ -26,8 +26,7 @@ module-margin-right = 1
 font-0 = Victor Mono:style=Bold:size=11;3
 font-1 = MaterialDesignIcons:style=Regular:size=14;4
 
-modules-left = powermenu i3 player-mpris-tail
-modules-center = date
+modules-left = powermenu date i3 player-mpris-tail
 modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio mic dunst mail lock xkeyboard
 
 tray-position = right
@@ -43,14 +42,14 @@ cursor-scroll = ns-resize
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
+format = <label-mode> <label-state>
 index-sort = true
 wrapping-scroll = false
 
 pin-workspaces = true
 
-label-mode-padding = 2
-label-mode-foreground = #000
+label-mode-padding = 1
+label-mode-foreground = ${colors.fg}
 label-mode-background = ${colors.acc}
 
 label-focused = %icon%
@@ -160,7 +159,8 @@ label-warn-foreground = ${colors.acc}
 [module/disk]
 type = internal/fs
 mount-0 = /
-label-mounted = %used%
+mount-1 = /media/data
+label-mounted = %mountpoint% %used%
 format-mounted = 󰋊 <label-mounted>
 
 [module/memory]
@@ -179,7 +179,8 @@ label-layout = %layout%
 label-indicator-on = %icon%
 label-indicator-off = %icon%
 
-indicator-icon-0 = num lock;%{F#616161}󰎥%{F-};%{F#FFFFFF}󰎥%{F-}
+indicator-icon-0 = caps lock;󰬵;󰬶
+indicator-icon-1 = num lock;󱧓;󰎠
 
 [module/date]
 type = internal/date
@@ -208,7 +209,6 @@ format-connected = 󰌘 <label-connected>
 label-connected = %linkspeed%
 
 format-disconnected = 󰌙
-format-disconnected-foreground = ${colors.fg-alt}
 
 [module/wlan]
 type = internal/network
@@ -219,7 +219,6 @@ format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
 
 format-disconnected = 󰤭
-format-disconnected-foreground = ${colors.fg-alt}
 
 ramp-signal-0 = 󰤟
 ramp-signal-1 = 󰤢
@@ -245,7 +244,6 @@ format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage:3%%
 
 label-muted = 󰝟 %percentage:3%%
-label-muted-foreground = ${colors.fg-alt}
 
 ramp-volume-0 = 󰕿
 ramp-volume-1 = 󰖀
