@@ -101,5 +101,11 @@
       stdin: true
       stdout: true
       stderr: true
+    # Locale
+    - command: sudo nvim -d _system/locale.conf /etc/locale.conf
+      description: Apply locale
+      stdin: true
+      stdout: true
+      stderr: true
 
 # vi: set tabwidth=4 shiftwidth=4
