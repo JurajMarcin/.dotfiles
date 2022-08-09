@@ -113,5 +113,11 @@
       stdin: true
       stdout: true
       stderr: true
+    # X11
+    - command: sudo cp -vi _system/xorg/30-touchpad.conf _system/xorg/50-mouse-acc.conf /etc/X11/xorg.conf.d/
+      description: Apply X11
+      stdin: true
+      stdout: true
+      stderr: true
 
 # vi: set tabwidth=4 shiftwidth=4
