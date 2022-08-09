@@ -63,24 +63,22 @@ bindsym $mod+x exec --no-startup-id "lock"
 
 # Lock and suspend shortcut
 bindsym $mod+Shift+x exec --no-startup-id "systemctl suspend"
+bindsym XF86Sleep exec --no-startup-id "systemctl suspend"
 
 ## MEDIA ##
 
-# Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id "volume +1%"
 bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "volume +10%"
 bindsym XF86AudioLowerVolume exec --no-startup-id "volume -1%"
 bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "volume -10%"
 bindsym XF86AudioMute exec --no-startup-id "volume --mute-toggle"
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# Media Keys
 bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
+
+bindsym XF86AudioMicMute exec --no-startup-id "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
 ## APPS ##
 
@@ -92,9 +90,6 @@ bindsym $mod+d exec --no-startup-id "~/.config/rofi/rofi.sh"
 
 # start window rofi
 bindsym $mod+Tab exec --no-startup-id "~/.config/rofi/window.sh"
-
-# MX Master2 thumb button rofi binding
-bindsym Control+Mod1+Tab exec --no-startup-id "~/.config/rofi/rofi.sh"
 
 # Screenshots
 bindsym Print exec --no-startup-id "flameshot gui"
@@ -217,7 +212,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+## DEVICES ##
+
+# MX Master2 thumb button rofi binding
+# bindsym Control+Mod1+Tab exec --no-startup-id "~/.config/rofi/rofi.sh"
+
+# MX Mechanical Snipping tool (Super+Shift+S) as flameshot
+bindsym Mod4+Shift+s exec --no-startup-id "flameshot gui"
+
 #### WORKSPACE AND WINDOW CONFIGS ####
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 # Workspace screens
 workspace $ws1 output primary
