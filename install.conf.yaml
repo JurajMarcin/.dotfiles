@@ -101,6 +101,12 @@
       stdin: true
       stdout: true
       stderr: true
+    # SDDM
+    - command: sudo cp -vi _system/sddm/general.conf /etc/sddm.conf.d/general.conf
+      description: Apply SDDM
+      stdin: true
+      stdout: true
+      stderr: true
     # Locale
     - command: sudo nvim -d _system/locale.conf /etc/locale.conf
       description: Apply locale
