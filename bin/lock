@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export XSECURELOCK_SAVER=saver_mpv
-export XSECURELOCK_LIST_VIDEOS_COMMAND="find ~/.local/share/wallpapers/lock -type f"
+export XSECURELOCK_LIST_VIDEOS_COMMAND="echo ~/.local/share/wallpapers/background.jpg"
 export XSECURELOCK_IMAGE_DURATION_SECONDS=15
 
 exec xsecurelock
