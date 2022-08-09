@@ -190,10 +190,10 @@ label = %date% %time%
 
 [module/lock]
 type = custom/script
-exec = ~/.config/polybar/scripts/systemctl tail xss-lock.service --icon-on 󰌾 --icon-off 󱙱
+exec = ~/.config/polybar/scripts/unitstatus --icon-on 󰌾 --icon-off 󱙱 tail xss-lock.service
 label = %output%
 tail = true
-click-left = ~/.config/polybar/scripts/systemctl toggle xss-lock.service
+click-left = ~/.config/polybar/scripts/unitstatus toggle xss-lock.service
 
 ;
 ; Networking
@@ -228,7 +228,7 @@ ramp-signal-3 = 󰤨
 
 [module/bluetooth]
 type = custom/script
-exec = ~/.config/polybar/scripts/bluetoothstatus status '󰂲' '󰂯' '󰂱' '󰦋' '󰗾' '󰏳' '#FFFFFF' '#616161'
+exec = ~/.config/polybar/scripts/bluetoothstatus --icon-off 󰂲 --icon-on 󰂯 --icon-connected 󰂱 --icon-mouse 󰦋 --icon-keyboard 󰂳 --icon-audio 󰗾 --icon-phone 󰏳 status
 tail = true
 click-left = ~/.config/polybar/scripts/bluetoothstatus toggle
 
@@ -257,8 +257,8 @@ click-right = pavucontrol
 
 [module/dunst]
 type = custom/script
-exec = ~/.config/polybar/scripts/dunststatus show '󰂚' '󰂛' '#FFFFFF' '#616161'
-click-left = ~/.config/polybar/scripts/dunststatus toggle '󰂚' '󰂛' '#FFFFFF' '#616161'
+exec = ~/.config/polybar/scripts/dunststatus --icon-on 󰂚 --icon-off 󰂛 show
+click-left = ~/.config/polybar/scripts/dunststatus --icon-on 󰂚 --icon-off 󰂛 toggle
 label = "%output%"
 
 [module/player-mpris-tail]

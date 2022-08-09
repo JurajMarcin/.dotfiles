@@ -2,21 +2,100 @@
 #
 # Author: Juraj Marcin <juraj@jurajmarcin.com>
 #
-# Usage ./bluetoothstatus ACTION [ICON_OFF [ICON_ON [ICON_CONNECTED [ICON_HID [ICON_AUDIO [ICON_PHONE [COLOR_ON [COLOR_OFF]]]]]]]]
+# Usage ./bluetoothstatus [OPTIONS] ACTION
+#
+# Options:
+#
+#   --icon-off ICON
+#       bluetooth off (default: N)
+#
+#   --icon-on ICON
+#       bluetooth on (default: Y)
+#
+#   --icon-connected ICON
+#       other connected device (default: C)
+#
+#   --icon-mouse ICON
+#       mouse connected (default: M)
+#
+#   --icon-audio ICON
+#       audio device connected (default: A)
+#
+#   --icon-phone ICON
+#       phone connected (default: P)
+#
+#   --color-off HEX_COLOR
+#       bluetooth off color (default: none)
+#
+#   --color-on HEX_COLOR
+#       bluetooth on color (default: none)
 #
 # Actions:
 #
-# toggle    -- toggle bluetooth on and off
-# status    -- tail bluetooth status
+#   toggle
+#       toggle bluetooth on and off
+#
+#   status
+#       tail bluetooth status
 
-ICON_OFF="${2:-N}"
-ICON_ON="${3:-Y}"
-ICON_CONNECTED="${4:-C}"
-ICON_HID="${5:-H}"
-ICON_AUDIO="${6:-A}"
-ICON_PHONE="${7:-P}"
-COLOR_ON="${8:-#00FF00}"
-COLOR_OFF="${9:-#FF0000}"
+ICON_OFF=N
+ICON_ON=Y
+ICON_CONNECTED=C
+ICON_MOUSE=M
+ICON_KEYBOARD=K
+ICON_AUDIO=A
+ICON_PHONE=P
+COLOR_ON=
+COLOR_OFF=
+
+eval set -- `getopt --longoptions "icon-off:,icon-on:,icon-connected:,icon-mouse:,icon-keyboard:,icon-audio:,icon-phone:,color-off:,color-on:" -- "" "$@"`
+
+while true; do
+    case "$1" in
+        --icon-off)
+            ICON_OFF="$2"
+            shift 2
+            ;;
+        --icon-on)
+            ICON_ON="$2"
+            shift 2
+            ;;
+        --icon-connected)
+            ICON_CONNECTED="$2"
+            shift 2
+            ;;
+        --icon-mouse)
+            ICON_MOUSE="$2"
+            shift 2
+            ;;
+        --icon-keyboard)
+            ICON_KEYBOARD="$2"
+            shift 2
+            ;;
+        --icon-audio)
+            ICON_AUDIO="$2"
+            shift 2
+            ;;
+        --icon-phone)
+            ICON_PHONE="$2"
+            shift 2
+            ;;
+        --color-off)
+            COLOR_OFF="$2"
+            shift 2
+            ;;
+        --color-on)
+            COLOR_ON="$2"
+            shift 2
+            ;;
+        "--")
+            shift
+            break
+            ;;
+    esac
+done
+
+ACTION="$1"
 
 bt_tail() {
     bluetoothctl | while read -r; do
@@ -31,7 +110,9 @@ bt_tail() {
                     device_info=$(bluetoothctl info "$addr")
                     if echo "$device_info" | grep -q "Connected: yes"; then
                         if echo "$device_info" | grep -q "Icon: input-mouse"; then
-                            devices="$devices$ICON_HID"
+                            devices="$devices$ICON_MOUSE"
+                        elif echo "$device_info" | grep -q "Icon: input-keyboard"; then
+                            devices="$devices$ICON_KEYBOARD"
                         elif echo "$device_info" | grep -q "Icon: audio-card"; then
                             devices="$devices$ICON_AUDIO"
                         else
@@ -39,12 +120,21 @@ bt_tail() {
                         fi
                     fi
                 done
-                
+
                 echo "%{F$COLOR_ON}${devices:-$ICON_ON}%{F-}"
+                label="${devices:-$ICON_ON}"
+                color="$COLOR_ON"
             }
 
         else
-            echo "%{F$COLOR_OFF}$ICON_OFF%{F-}"
+            label="$ICON_OFF"
+            color="$COLOR_OFF"
+        fi
+
+        if [ -n "$color" ]; then
+            echo "%{F$color}$label%{F-}"
+        else
+            echo "$label"
         fi
     done
 }

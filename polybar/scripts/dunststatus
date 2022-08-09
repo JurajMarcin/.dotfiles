@@ -2,31 +2,77 @@
 #
 # Author: Juraj Marcin <juraj@jurajmarcin.com>
 #
-# Usage ./dunststatus [ACTION [ICON_ENABLED [ICON_DISABLED [COLOR_ENABLED [COLOR_DISABLED]]]]]
+# Usage ./dunststatus [OPTIONS] [ACTION]
+#
+# Options:
+#
+#   --icon-off ICON
+#       notifications off (default: N)
+#
+#   --icon-on ICON
+#       notifications on (default: Y)
+#
+#   --color-off HEX_COLOR
+#       notifications off color (default: none)
+#
+#   --color-on HEX_COLOR
+#       notifications on color (default: none)
 #
 # Actions:
-# toggle    -- toggle notifications
-# status    -- only shows status
 #
-# Defaults:
-# ICON_ENABLED=Y
-# ICON_DISABLED=N
-# COLOR_ENABLED=#00FF00 (green)
-# COLOR_DISABLED=#FF0000 (red)
+#   toggle
+#       toggle notifications
+#   show
+#       only shows status (default action)
 
-ICON_ENABLED="${2:-Y}"
-ICON_DISABLED="${3:-N}"
-COLOR_ENABLED="${4:-#00FF00}"
-COLOR_DISABLED="${5:-#FF0000}"
+ICON_OFF=N
+ICON_ON=Y
+COLOR_ON=
+COLOR_OFF=
 
-if [ "$1" = "toggle" ]; then
+eval set -- `getopt --longoptions "icon-off:,icon-on:,color-off:,color-on:" -- "" "$@"`
+
+while true; do
+    case "$1" in
+        --icon-off)
+            ICON_OFF="$2"
+            shift 2
+            ;;
+        --icon-on)
+            ICON_ON="$2"
+            shift 2
+            ;;
+        --color-off)
+            COLOR_OFF="$2"
+            shift 2
+            ;;
+        --color-on)
+            COLOR_ON="$2"
+            shift 2
+            ;;
+        "--")
+            shift
+            break
+            ;;
+    esac
+done
+
+ACTION="$1"
+
+if [ "$ACTION" = "toggle" ]; then
     dunstctl set-paused toggle
 fi
 
-DUNST_STATUS=$(dunstctl is-paused)
-
-if [ "$DUNST_STATUS" = "true" ]; then
-    echo "%{F$COLOR_DISABLED}$ICON_DISABLED%{F-}"
+if [ "`dunstctl is-paused`" = "true" ]; then
+    icon="$ICON_OFF"
+    color="$COLOR_OFF"
 else
-    echo "%{F$COLOR_ENABLED}$ICON_ENABLED%{F-}"
+    icon="$ICON_ON"
+    color="$COLOR_ON"
+fi
+
+if [ -n "$color" ]; then
+    echo "%{F$color}$icon%{F-}"
+else
+    echo "$icon"
 fi

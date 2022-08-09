@@ -1,0 +1,103 @@
+#!/bin/bash
+#
+# Author: Juraj Marcin <juraj@jurajmarcin.com>
+#
+# Usage ./unitstatus [OPTIONS] ACTION [SOURCE]
+#
+# Options:
+#
+#   --icon-on ICON
+#       icon for active unit (default: Y)
+#
+#   --icon-off ICON
+#       icon for inactive unit (default: Y)
+#
+#   --color-on HEX_COLOR
+#       color for active unit (default: none)
+#
+#   --color-off HEX_COLOR
+#       color for inactive unit (default: none)
+#
+# Actions:
+#
+#   toggle
+#       toggle mic mute
+#
+#   tail
+#       tail mic status
+
+ICON_ON=Y
+ICON_OFF=N
+COLOR_ON=
+COLOR_OFF=
+
+eval set -- `getopt --longoptions "icon-on:,icon-off:,color-on:,color-off:" -- "" "$@"`
+
+while true; do
+    case "$1" in
+        --icon-on)
+            ICON_ON="$2"
+            shift 2
+            ;;
+        --icon-off)
+            ICON_OFF="$2"
+            shift 2
+            ;;
+        --color-on)
+            COLOR_ON="$2"
+            shift 2
+            ;;
+        --color-off)
+            COLOR_OFF="$2"
+            shift 2
+            ;;
+        "--")
+            shift
+            break
+            ;;
+    esac
+done
+
+ACTION="$1"
+UNIT="$2"
+
+get_current_icon() {
+    status=`systemctl --user is-active "$UNIT"`
+    if [ "$status" = "active" ]; then
+        icon="$ICON_ON"
+        color="$COLOR_ON"
+    else
+        icon="$ICON_OFF"
+        COLOR="$COLOR_OFF"
+    fi
+
+    if [ -n "$color" ]; then
+        echo "%{F$color}$icon%{F-}"
+    else
+        echo "$icon"
+    fi
+}
+
+case "$ACTION" in
+    tail)
+        get_current_icon
+
+        journalctl --follow --output cat --user --unit "$UNIT" \
+                | while read -r; do
+            get_current_icon
+        done
+    ;;
+    show)
+        get_current_icon
+    ;;
+    toggle)
+        if [ "`systemctl --user is-active "$UNIT"`" = "active" ]; then
+            systemctl --user stop "$UNIT"
+        else
+            systemctl --user start "$UNIT"
+        fi
+    ;;
+    *)
+        exit 1
+    ;;
+esac
