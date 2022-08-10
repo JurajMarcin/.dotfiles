@@ -202,7 +202,7 @@ click-left = ~/.config/polybar/scripts/unitstatus toggle xss-lock.service
 
 [module/eth]
 type = internal/network
-interface = enp7s0
+interface-type = wired
 interval = 3.0
 
 format-connected = 󰌘 <label-connected>
@@ -212,7 +212,7 @@ format-disconnected = 󰌙
 
 [module/wlan]
 type = internal/network
-interface = wlp6s0
+interface-type = wireless
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
