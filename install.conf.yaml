@@ -73,13 +73,13 @@
     # -- Command line applications --
     # Neovim
     - [./install-vim-plug.sh, Installing vim plug for neovim]
-    - [nvim +PlugInstall +PlugClean +PlugUpgrade +PlugUpdate +qa, Installing neovim plugins]
+    - [nvim +PlugInstall +PlugClean! +PlugUpgrade +PlugUpdate +qa, Installing neovim plugins]
     # coc.nvim plugins
-    - [nvim +"CocInstall coc-html-css-support coc-html coc-eslint coc-emmet coc-dotenv coc-cssmodules coc-tsserver coc-swagger coc-stylelint coc-json coc-docker coc-css", Installing WebDev plugins]
-    - [nvim +"CocInstall coc-rome coc-pyright", Installing Python plugins]
-    - [nvim +"CocInstall coc-clangd coc-cmake", Installing C plugins]
-    - [nvim +"CocInstall coc-bibtex coc-vimtex coc-ltex", Installing TeX plugins]
-    - [nvim +"CocInstall coc-marketplace coc-terminal coc-markdownlint", Installing other plugins]
+    - [nvim +"CocInstall coc-html-css-support coc-html coc-eslint coc-emmet coc-dotenv coc-cssmodules coc-tsserver coc-swagger coc-stylelint coc-json coc-docker coc-css" +qa, Installing WebDev plugins]
+    - [nvim +"CocInstall coc-rome coc-pyright" +qa, Installing Python plugins]
+    - [nvim +"CocInstall coc-clangd coc-cmake" +qa, Installing C plugins]
+    - [nvim +"CocInstall coc-bibtex coc-vimtex coc-ltex" +qa, Installing TeX plugins]
+    - [nvim +"CocInstall coc-marketplace coc-terminal coc-markdownlint" +qa, Installing other plugins]
 
     # -- X applications --
     # Reload systemd daeomon
