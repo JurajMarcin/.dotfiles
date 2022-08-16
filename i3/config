@@ -39,7 +39,7 @@ gaps outer 0
 smart_gaps off
 
 # Wallpaper
-exec_always --no-startup-id "xwallpaper --zoom ~/.local/share/wallpapers/background.jpg"
+exec_always --no-startup-id "feh --no-fehbg --bg-max --image-bg \#FFFFFF ~/.local/share/wallpapers/background.jpg"
 
 # Gaps fix
 for_window [class="^.*"] border pixel 0
