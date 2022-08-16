@@ -139,13 +139,17 @@ let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 
 " Nerdtree
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeFocus<CR>
 
 "" Switching windows
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
+
+"" Switching buffers
+noremap <A-PageUp> :bprev<CR>
+noremap <A-PageDown> :bnext<CR>
 
 set nocp
 
