@@ -96,19 +96,19 @@
 
     # -- System wide configurations --
     # Bluetoothctl
-    - command: sudo nvim -d _system/bluetooth/main.conf /etc/bluetooth/main.conf
+    - command: sudo ./apply-conf.sh _system/bluetooth/main.conf /etc/bluetooth/main.conf
       description: Apply bluetoothctl
       stdin: true
       stdout: true
       stderr: true
     # SDDM
-    - command: sudo cp -vi _system/sddm/general.conf /etc/sddm.conf.d/general.conf
+    - command: sudo ./apply-conf.sh _system/sddm/general.conf /etc/sddm.conf.d/general.conf
       description: Apply SDDM
       stdin: true
       stdout: true
       stderr: true
     # Locale
-    - command: sudo nvim -d _system/locale.conf /etc/locale.conf
+    - command: sudo ./apply-conf.sh _system/locale.conf /etc/locale.conf
       description: Apply locale
       stdin: true
       stdout: true
@@ -120,7 +120,7 @@
       stdout: true
       stderr: true
     # X11
-    - command: sudo cp -vi _system/xorg/30-touchpad.conf _system/xorg/50-mouse-acc.conf /etc/X11/xorg.conf.d/
+    - command: sudo ./apply-conf.sh _system/xorg/30-touchpad.conf _system/xorg/50-mouse-acc.conf /etc/X11/xorg.conf.d/
       description: Apply X11
       stdin: true
       stdout: true
