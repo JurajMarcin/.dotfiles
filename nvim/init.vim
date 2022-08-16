@@ -256,8 +256,10 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 " c
-autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab textwidth=80
-autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab textwidth=80
+autocmd FileType c setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
+autocmd FileType cpp setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
+autocmd FileType kconfig setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
+autocmd FileType make setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
 
 " LaTeX
 autocmd FileType tex setlocal colorcolumn=80 textwidth=80
@@ -274,6 +276,19 @@ augroup vimrc-python
         \ colorcolumn=79 formatoptions+=croq softtabstop=4
         \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
+
+" webdev
+autocmd FileType typescriptreact setlocal textwidth=100
+autocmd FileType javascript setlocal textwidth=100
+autocmd FileType javascript-1 setlocal textwidth=100
+autocmd FileType javascript-2 setlocal textwidth=100
+autocmd FileType javascriptreact setlocal textwidth=100
+autocmd FileType jsx setlocal textwidth=100
+autocmd FileType jsx_pretty setlocal textwidth=100
+autocmd FileType tsx setlocal textwidth=100
+autocmd FileType typescript setlocal textwidth=100
+autocmd FileType typescriptcommon setlocal textwidth=100
+autocmd FileType vue setlocal textwidth=100
 
 " Vimtex
 let g:tex_flavor = 'latex'
