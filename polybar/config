@@ -81,7 +81,7 @@ expand-right = true
 
 format-spacing = 0
 
-label-open = 󰣇
+label-open = 󰣛
 label-close = 󰅖
 label-separator = 󰤃
 
@@ -113,7 +113,7 @@ menu-4-0-exec = systemctl poweroff
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = ADP1
+adapter = AC
 full-at = 98
 
 time-format = %H:%M
@@ -159,7 +159,6 @@ label-warn-foreground = ${colors.acc}
 [module/disk]
 type = internal/fs
 mount-0 = /
-mount-1 = /media/data
 warn-percentage = 85
 
 format-mounted = 󰋊 <label-mounted>
