@@ -104,8 +104,7 @@ bt_tail() {
 
             devices=""
 
-            bluetoothctl paired-devices | grep Device \
-                | {
+            bluetoothctl paired-devices | grep Device | {
                 while read -r class addr name; do
                     device_info=$(bluetoothctl info "$addr")
                     if echo "$device_info" | grep -q "Connected: yes"; then
@@ -121,20 +120,23 @@ bt_tail() {
                     fi
                 done
 
-                echo "%{F$COLOR_ON}${devices:-$ICON_ON}%{F-}"
                 label="${devices:-$ICON_ON}"
                 color="$COLOR_ON"
+                if [ -n "$color" ]; then
+                    echo "%{F$color}$label%{F-}"
+                else
+                    echo "$label"
+                fi
             }
 
         else
             label="$ICON_OFF"
             color="$COLOR_OFF"
-        fi
-
-        if [ -n "$color" ]; then
-            echo "%{F$color}$label%{F-}"
-        else
-            echo "$label"
+            if [ -n "$color" ]; then
+                echo "%{F$color}$label%{F-}"
+            else
+                echo "$label"
+            fi
         fi
     done
 }
