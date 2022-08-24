@@ -16,7 +16,11 @@ PRIMARY=$(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1)
 OTHERS=$(xrandr --query | grep " connected" | grep -v "primary" | cut -d" " -f1)
 
 # Launch Polybar on primary monitor and wait one second for system tray to show up
-MONITOR=$PRIMARY polybar --reload main &
+if [ -n "$PRIMARY" ]; then
+    MONITOR=$PRIMARY polybar --reload main &
+fi
+
+sleep 1
 
 # Launch Polybar on other monitors
 for m in $OTHERS; do
