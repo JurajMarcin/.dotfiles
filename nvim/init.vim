@@ -290,6 +290,10 @@ autocmd FileType typescript setlocal textwidth=100
 autocmd FileType typescriptcommon setlocal textwidth=100
 autocmd FileType vue setlocal textwidth=100
 
+" mails
+autocmd FileType mail setlocal tabstop=8 shiftwidth=8 noexpandtab
+autocmd FileType gitsendmail setlocal tabstop=8 shiftwidth=8 noexpandtab
+
 " Vimtex
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
