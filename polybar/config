@@ -206,7 +206,7 @@ interface-type = wired
 interval = 3.0
 
 format-connected = 󰌘 <label-connected>
-label-connected = %linkspeed%
+label-connected = %ifname% %linkspeed%
 
 format-disconnected = 󰌙
 
