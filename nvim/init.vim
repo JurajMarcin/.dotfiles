@@ -262,7 +262,7 @@ autocmd FileType kconfig setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=8
 autocmd FileType make setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
 
 " LaTeX
-autocmd FileType tex setlocal colorcolumn=80 textwidth=80
+autocmd FileType tex setlocal textwidth=80
 
 " haskell
 let g:haskell_conceal_wide = 0
