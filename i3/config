@@ -38,7 +38,7 @@ gaps outer 0
 smart_gaps on
 
 # Wallpaper
-exec --no-startup-id "xwallpaper --zoom ~/.local/share/wallpapers/background.jpg"
+exec_always --no-startup-id "xwallpaper --zoom ~/.local/share/wallpapers/background.jpg"
 
 # Gaps fix
 for_window [class="^.*"] border pixel 0
