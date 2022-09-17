@@ -204,6 +204,7 @@ click-left = ~/.config/polybar/scripts/unitstatus toggle xss-lock.service
 type = internal/network
 interface-type = wired
 interval = 3.0
+unknown-as-up = true
 
 format-connected = 󰌘 <label-connected>
 label-connected = %ifname% %linkspeed%
