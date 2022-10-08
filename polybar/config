@@ -269,7 +269,7 @@ label = "%output%"
 
 [module/player-mpris-tail]
 type = custom/script
-exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:t20:{artist}:} - {:t40:{title}:}' --icon-playing '󰏤' --icon-paused '󰐊' --icon-stopped '󰓛' --icon-none ''
+exec = python ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:t20:{artist}:} - {:t40:{title}:}' --icon-playing '󰏤' --icon-paused '󰐊' --icon-stopped '󰓛' --icon-none ''
 tail = true
 label = %output%
 click-middle = ~/.config/polybar/scripts/player-mpris-tail.py previous
