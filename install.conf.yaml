@@ -90,6 +90,9 @@
     - [systemctl --user enable --now flameshot.service, Enabling flameshot service]
     # Picom
     - [systemctl --user enable --now picom.service, Enabling picom service]
+    # Polybar
+    - [systemctl --user enable --now polybar.service, Enabling polybar service]
+    - ["curl -o ./polybar/scripts/player-mpris-tail.py https://raw.githubusercontent.com/polybar/polybar-scripts/master/polybar-scripts/player-mpris-tail/player-mpris-tail.py", Downloading player-mpris-tail.py]
     # X utils
     - [systemctl --user enable --now xmodmap.service, Enabling xmodmap service]
     - [systemctl --user enable --now xss-lock.service, Enabling xss-lock service]
