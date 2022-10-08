@@ -58,6 +58,7 @@
     ~/.config/rofi: rofi
     # Systemd
     ~/.local/share/systemd/user/graphical.target: systemd/user/graphical.target
+    ~/.local/share/systemd/user/xrpm-auto-wakeup.service: systemd/user/xrpm-auto-wakeup.service
     # X utils
     ~/.XCompose: XCompose
     ~/.Xmodmap: Xmodmap
