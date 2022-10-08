@@ -1,0 +1,41 @@
+#!/bin/bash
+
+ICON=M
+
+eval set -- `getopt --longoptions "icon:,color-new:" -- "i:c:" "$@"`
+
+while true; do
+    case "$1" in
+        "-i"|"--icon")
+            ICON="$2"
+            shift 2
+            ;;
+        "-c"|"--color-new")
+            COLOR_NEW="$2"
+            shift 2
+            ;;
+        "--")
+            shift
+            break
+            ;;
+    esac
+done
+
+MAILDIR=$1
+
+get_current_icon() {
+
+    if [ "`find "$MAILDIR" -type f -not -name '*2,*S*' -not -name '.*' -not -path '*Archive*' | wc -l`" -ne 0 ]; then
+        color="$COLOR_NEW"
+    else
+        color=""
+    fi
+
+    if [ -n "$color" ]; then
+        echo "%{F$color}$ICON%{F-}"
+    else
+        echo "$ICON"
+    fi
+}
+
+get_current_icon
