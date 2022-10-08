@@ -12,6 +12,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
 + gnupg
     + pinentry
         + gcr
++ goimapnotify
 + i3-gaps
     + xsecurelock
     + pavucontrol

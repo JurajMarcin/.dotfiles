@@ -7,23 +7,24 @@
 - create:
     - ~/Mail/Personal
     - ~/Mail/MUNI
+    - ~/Mail/Public
 
 - link:
+    # goimapnotify
+    ~/.config/imapnotify: imapnotify
     # Khard
     ~/.config/khard: khard
     # Mbsync
     ~/.mbsyncrc: mbsyncrc
-    ~/.config/systemd/user/mbsync@.service: systemd/user/mbsync@.service
-    ~/.config/systemd/user/mbsync@.timer: systemd/user/mbsync@.timer
     # Neomutt
     ~/.config/neomutt: neomutt
 
 - shell:
     # Update dotbot submodule
     - [git submodule update --init --recursive, Installing submodules]
-    # Reload systemd daeomon
-    - [systemctl --user daemon-reload, Reloading systemd daemon]
-    # Mbsync
-    - [systemctl --user enable --now mbsync@-a.timer, Enabling mbsync timer]
+    # goimapnotify
+    - [systemctl --user enable --now goimapnotify@personal.service, Enable notify for personal]
+    - [systemctl --user enable --now goimapnotify@muni.service, Enable notify for muni]
+    - [systemctl --user enable --now goimapnotify@public.service, Enable notify for public]
 
 # vi: set tabwidth=4 shiftwidth=4
