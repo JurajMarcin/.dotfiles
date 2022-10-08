@@ -32,7 +32,7 @@ prompt_build() {
     echo -n "%(?..$(prompt_segment red black "%?"))"
     echo -n "%1(j.$(prompt_segment yellow black "%j").)"
     [[ -n ${vcs_info_msg_0_} ]] && prompt_segment cyan black "$vcs_info_msg_0_"
-    [[ -n ${VIRTUAL_ENV} ]] && prompt_segment white black "󰌠 $(basename "$VIRTUAL_ENV")"
+    [[ -n ${VIRTUAL_ENV} ]] && prompt_segment white black "󰌠  $(basename "$VIRTUAL_ENV")"
     prompt_end
     echo
     prompt_start ${USER_COLOR} black "%#"
