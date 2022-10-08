@@ -110,6 +110,18 @@
       stdin: true
       stdout: true
       stderr: true
+    # SDDM Sugar Candy theme
+    - command: sudo ./apply-conf.sh _system/sddm/sugar-candy.conf /usr/share/sddm/themes/sugar-candy/theme.conf
+      description: Apply SDDM Sugar Candy theme
+      stdin: true
+      stdout: true
+      stderr: true
+    # SDDM Sugar Candy background
+    - command: sudo cp -iv _system/sddm/trains.jpg /usr/share/sddm/themes/sugar-candy/Backgrounds/trains.jpg
+      description: Copy SDDM Sugar Candy theme background
+      stdin: true
+      stdout: true
+      stderr: true
     # Locale
     - command: sudo ./apply-conf.sh _system/locale.conf /etc/locale.conf
       description: Apply locale
