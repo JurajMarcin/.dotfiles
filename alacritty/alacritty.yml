@@ -42,9 +42,10 @@ colors:
       foreground: '#212121'
       background: '#FFEA00'
 
-    bar:
-      foreground: '#212121'
-      background: '#FFEA00'
+  # Footer bar
+  footer_bar:
+    foreground: '#212121'
+    background: '#FFEA00'
 
   # Normal colors
   normal:
