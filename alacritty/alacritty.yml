@@ -21,7 +21,7 @@ font:
   size: 11.0
 
   offset:
-    x: 1
+    x: 0
     y: 0
 
 
@@ -80,32 +80,6 @@ colors:
     cyan:    '#00838F'
     white:   '#BDBDBD'
 
-# Key bindings
-key_bindings:
-  - { key: Paste,                                      action: Paste          }
-  - { key: Copy,                                       action: Copy           }
-  - { key: L,              mods: Control,              action: ClearLogNotice }
-  - { key: L,              mods: Control,  mode: ~Vi,  chars: "\x0c"          }
-  - { key: PageUp,         mods: Shift,    mode: ~Alt, action: None           }
-  - { key: PageDown,       mods: Shift,    mode: ~Alt, action: None           }
-  - { key: Home,           mods: Shift,    mode: ~Alt, action: None           }
-  - { key: End,            mods: Shift,    mode: ~Alt, action: None           }
-
-  # Vi Mode
-  - { key: Space,          mods: Shift|Control,        action: None }
-
-  # (Windows, Linux, and BSD only)
-  - { key: V,              mods: Control|Shift,        action: Paste            }
-  - { key: C,              mods: Control|Shift,        action: Copy             }
-  - { key: F,              mods: Control|Shift,        action: SearchForward    }
-  - { key: B,              mods: Control|Shift,        action: SearchBackward   }
-  - { key: Insert,         mods: Shift,                action: None             }
-  - { key: Key0,           mods: Control,              action: None             }
-  - { key: Equals,         mods: Control,              action: ResetFontSize    }
-  - { key: Plus,           mods: Control,              action: IncreaseFontSize }
-  - { key: NumpadAdd,      mods: Control,              action: IncreaseFontSize}
-  - { key: Minus,          mods: Control,              action: DecreaseFontSize }
-  - { key: NumpadSubtract, mods: Control,              action: DecreaseFontSize }
 
 # Bell
 bell:
