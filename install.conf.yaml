@@ -81,7 +81,7 @@
     - [nvim +"CocInstall coc-rome coc-pyright" +qa, Installing Python plugins]
     - [nvim +"CocInstall coc-clangd coc-cmake" +qa, Installing C plugins]
     - [nvim +"CocInstall coc-bibtex coc-vimtex coc-ltex" +qa, Installing TeX plugins]
-    - [nvim +"CocInstall coc-marketplace coc-terminal coc-markdownlint" +qa, Installing other plugins]
+    - [nvim +"CocInstall coc-marketplace coc-terminal coc-markdownlint coc-git" +qa, Installing other plugins]
 
     # -- X applications --
     # Reload systemd daeomon
