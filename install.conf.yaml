@@ -10,6 +10,8 @@
 
 - link:
     # -- Command line applications --
+    # GDB
+    ~/.gdbinit: gdbinit
     # Neovim
     ~/.config/nvim: nvim
     # tmux
