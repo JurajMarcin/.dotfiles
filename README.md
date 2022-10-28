@@ -27,7 +27,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
     + python-pynvim
 + neomutt
     + iconv
-    + imv
+    + nsxiv
     + khard
     + lynx
     + pass
