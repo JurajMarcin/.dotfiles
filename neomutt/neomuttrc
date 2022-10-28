@@ -29,47 +29,16 @@ macro attach            'V' \
 
 set sidebar_visible
 set mail_check_stats
-
-# Visuals
-
-set date_format     = "%F %R"
-color normal    white   black
-
-# Informational
-color error     black   red
-color warning   black   yellow
-
-# Status visuals
-
-set status_format   = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
-
-# Index visuals
-
-set index_format    = "[%Z] %D  %-20.20L  %s"
-color index                             white       default     ".*"
-color index                 bold        brightred   default     "~O"
-color index                 bold        red         default     "~N"
-color index                             yellow      default     "~F"
-
-# Pager visuals
-
-color markers                           cyan        default
-color tilde                             cyan        default
-color search                            black       yellow
-color hdrdefault            bold        white       default
-
-# Sidebar visuals
-
 set sidebar_format  = "%B %?F?[%F]? %?N?(%N)? %* %S"
 set sidebar_short_path
 set sidebar_folder_indent
-color sidebar_highlight     underline   default     default
-color sidebar_new           bold        red         default
-color sidebar_unread        bold        brightred   default
-color sidebar_flagged                   yellow      default
 
-# Compose
-color compose header        bold        default     default
+# Formatting
+
+set date_format     = "%F %R"
+set status_format   = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
+set index_format    = "[%Z] %D  %-20.20L  %s"
+
 
 # Contact managament
 
@@ -118,5 +87,10 @@ folder-hook "Local" source ~/.config/neomutt/local
 folder-hook "MUNI" source ~/.config/neomutt/muni
 folder-hook "Personal" source ~/.config/neomutt/personal
 folder-hook "Public" source ~/.config/neomutt/public
+
+source ~/.config/neomutt/neonwolf-256.neomuttrc
+color sidebar_new           brightcolor154  color000
+color sidebar_unread        brightcolor154  color000
+color sidebar_flagged       brightcolor165  color000
 
 source ~/.config/neomutt/personal
