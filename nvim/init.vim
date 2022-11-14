@@ -51,6 +51,8 @@ cnoreabbrev Qall qall
 
 " Basic setup
 
+set mouse=a
+
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
