@@ -14,19 +14,19 @@ else
     USER_COLOR=$DEFAULT_COLOR
 fi
 
-prompt_start() {
+function prompt_start {
     echo -n "%K{$1}%F{$2} $3 %F{$1}"
 }
 
-prompt_segment() {
+function prompt_segment {
     echo -n "%K{$1}\ue0b0%F{$2} $3 %F{$1}"
 }
 
-prompt_end() {
+function prompt_end {
     echo -n "%k\ue0b0%f%b "
 }
 
-prompt_build() {
+function prompt_build {
     prompt_start ${DEFAULT_COLOR} black "%n@%M"
     prompt_segment blue black "%~"
     echo -n "%(?..$(prompt_segment red black "%?"))"
@@ -39,7 +39,9 @@ prompt_build() {
     prompt_end
 }
 
-precmd() {
+function precmd_prompt {
     vcs_info
     PROMPT="$(prompt_build)"
 }
+
+precmd_functions=($precmd_functions precmd_prompt)

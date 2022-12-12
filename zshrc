@@ -25,3 +25,14 @@ source ~/.zsh/aliases.zsh
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
+
+function precmd_title {
+    printf "\033]0;%s@%s  %s\007" "${USER}" "ntb-jm03" "${PWD/#$HOME/~}"
+}
+
+function preexec_title {
+    printf "\033]0;%s@%s  %s  %s\007" "${USER}" "ntb-jm03" "${PWD/#$HOME/~}" "$2"
+}
+
+precmd_functions=($precmd_functions precmd_title)
+preexec_functions=($preexec_functions preexec_title)

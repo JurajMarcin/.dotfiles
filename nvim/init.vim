@@ -128,7 +128,7 @@ endif
 
 set title
 set titleold="Terminal"
-set titlestring=%F
+" set titlestring="%F"
 
 " vim-airline
 let g:airline_theme = 'papercolor'
