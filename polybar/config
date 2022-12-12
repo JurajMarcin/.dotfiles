@@ -160,6 +160,7 @@ label-warn-foreground = ${colors.acc}
 type = internal/fs
 mount-0 = /
 mount-1 = /media/data
+mount-2 = /media/media
 warn-percentage = 85
 
 format-mounted = 󰋊 <label-mounted>
