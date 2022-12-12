@@ -1,6 +1,16 @@
 {
     "python.linting.mypyEnabled": true,
-    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.typeCheckingMode": "off",
+    "python.linting.mypyArgs": [
+        "--no-pretty",
+        "--ignore-missing-imports",
+        "--follow-imports=silent",
+        "--show-column-numbers",
+        "--strict",
+        "--allow-subclassing-any",
+        "--no-warn-return-any"
+    ],
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
