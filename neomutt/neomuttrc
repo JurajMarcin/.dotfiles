@@ -57,6 +57,7 @@ bind pager          <up>    previous-line
 bind pager          <down>  next-line
 macro pager         \Cu     |urlscan\n
 bind editor         <Tab>   complete-query
+bind index          <C-Tab> next-unread-mailbox
 
 bind index          <down>  next-entry
 bind index          j       next-entry
