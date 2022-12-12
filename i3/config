@@ -15,10 +15,10 @@ set $ws10 "10"
 
 #### STYLE ####
 
-font xft:Victor Mono Bold 12
+font xft:Victor Mono Bold 10
 
 # Center title
-title_align center
+title_align left
 
 # Hide edge borders
 hide_edge_borders both

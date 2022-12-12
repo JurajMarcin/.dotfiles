@@ -23,8 +23,8 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Victor Mono:style=Bold:size=11;3
-font-1 = MaterialDesignIcons:style=Regular:size=14;4
+font-0 = Victor Mono:style=Bold:size=10;3
+font-1 = MaterialDesignIcons:style=Regular:size=13;4
 
 modules-left = powermenu date i3 player-mpris-tail
 modules-right = bluetooth wlan eth disk memory cpu temperature battery pulseaudio mic dunst mail lock xkeyboard
