@@ -160,8 +160,14 @@ label-warn-foreground = ${colors.acc}
 type = internal/fs
 mount-0 = /
 mount-1 = /media/data
-label-mounted = %mountpoint% %used%
+warn-percentage = 85
+
 format-mounted = 󰋊 <label-mounted>
+format-warn = 󰋊 <label-warn>
+
+label-mounted = %mountpoint% %used%
+label-warn = %mountpoint% %used% (%percentage_used%%)
+label-warn-foreground = ${colors.acc}
 
 [module/memory]
 type = internal/memory
@@ -217,7 +223,7 @@ interface-type = wireless
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
+label-connected = %ifname% %essid%
 
 format-disconnected = 󰤭
 
