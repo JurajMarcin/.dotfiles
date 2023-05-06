@@ -23,7 +23,7 @@ set mailcap_path        = "~/.config/neomutt/mailcap"
 auto_view               text/html
 alternative_order       text/plain text/enriched text/html
 macro attach            'V' \
-                        "<pipe-entry>iconv -c --to-code=UTF8 > /tmp/mail.html<enter><shell-escape>brave /tmp/mail.html<enter>"
+                        "<pipe-entry>iconv -c --to-code=UTF8 > /tmp/mail.html<enter><shell-escape>firefox -P Personal /tmp/mail.html<enter>"
 
 # Sidebar
 
