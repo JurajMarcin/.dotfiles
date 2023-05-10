@@ -35,7 +35,7 @@ function prompt_build {
     [[ -n ${VIRTUAL_ENV} ]] && prompt_segment white black "󰌠  $(basename "$VIRTUAL_ENV")"
     prompt_end
     echo
-    prompt_start ${USER_COLOR} black "%#"
+    prompt_start ${USER_COLOR} black "$SHELL_STATUS%#"
     prompt_end
 }
 
