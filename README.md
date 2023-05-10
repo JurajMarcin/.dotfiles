@@ -55,4 +55,5 @@ Obligatory dotfiles repository for my Arch Linux setup.
 + Material Design Icons (polybar)
 + Noto (fontconfig)
 + Noto Emoji (fontconfig)
-+ Victor Mono (alacritty, dunst, i3, polybar, rofi, fontconfig)
++ Iosevka (dunst, i3, polybar, rofi, fontconfig)
++ Iosevka Nerd Font (alacritty)

@@ -2,8 +2,8 @@
 font:
   # Normal (roman) font face
   normal:
-    family: Victor Mono
-    style: Medium
+    family: Iosevka Nerd Font
+    style: Regular
 
   # Bold font face
   bold:
@@ -11,14 +11,14 @@ font:
 
   # Italic font face
   italic:
-    style: Medium Italic
+    style: Regular Italic
 
   # Bold italic font face
   bold_italic:
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 11.0
 
   offset:
     x: 0

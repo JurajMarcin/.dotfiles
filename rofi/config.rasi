@@ -7,7 +7,7 @@ window {
     border: 0;
     background-color: #424242;
     text-color: #FFFFFF;
-    font: "Victor Mono Medium 12";
+    font: "Iosevka 10";
 }
 
 mainbox {
