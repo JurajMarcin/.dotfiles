@@ -7,11 +7,15 @@
 - create:
     - ~/.config
     - ~/.local/bin
+    - ~/.config/lvim
 
 - link:
     # -- Command line applications --
     # GDB
     ~/.gdbinit: gdbinit
+    # LunarVim
+    ~/.config/lvim/config.lua: lvim/config.lua
+    ~/.config/lvim/after: lvim/after
     # Neovim
     ~/.config/nvim: nvim
     # tmux
@@ -76,12 +80,6 @@
     # Neovim
     - [./install-vim-plug.sh, Installing vim plug for neovim]
     - [nvim +PlugInstall +PlugClean! +PlugUpgrade +PlugUpdate +qa, Installing neovim plugins]
-    # coc.nvim plugins
-    - [nvim +"CocInstall coc-html-css-support coc-html coc-eslint coc-emmet coc-dotenv coc-cssmodules coc-tsserver coc-swagger coc-stylelint coc-json coc-docker coc-css" +qa, Installing WebDev plugins]
-    - [nvim +"CocInstall coc-rome coc-pyright" +qa, Installing Python plugins]
-    - [nvim +"CocInstall coc-clangd coc-cmake" +qa, Installing C plugins]
-    - [nvim +"CocInstall coc-bibtex coc-vimtex coc-ltex" +qa, Installing TeX plugins]
-    - [nvim +"CocInstall coc-marketplace coc-terminal coc-markdownlint coc-git" +qa, Installing other plugins]
 
     # -- X applications --
     # Reload systemd daeomon

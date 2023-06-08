@@ -1,9 +1,3 @@
-" Polyglot
-" Syntax highlight
-" Default highlight is better than polyglot
-let g:polyglot_disabled = ['python']
-let python_highlight_all = 1
-
 " Plugins
 
 call plug#begin('~/.local/share/nvim/plugged/')
@@ -15,25 +9,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
-Plug 'honza/vim-snippets'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-fugitive'
-
-" apiblueprint
-Plug 'kylef/apiblueprint.vim'
-
-" c
-Plug 'ludwig/split-manpage.vim'
-
-" haskell
-Plug 'dag/vim2hs'
-
-" python
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-
-" tex
-Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -61,12 +37,6 @@ set ttyfast
 
 "" Fix backspace indent
 set backspace=indent,eol,start
-
-"" Tabs. May be overridden by autocmd rules
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
 
 "" Map leader to ,
 let mapleader=','
@@ -155,149 +125,6 @@ noremap <A-PageDown> :bnext<CR>
 
 set nocp
 
-" coc.nvim
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" coc-git
-" navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-" navigate conflicts of current buffer
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
-" show chunk diff at current position
-nmap gd <Plug>(coc-git-chunkinfo)
-" show commit contains current position
-nmap gs <Plug>(coc-git-commit)
-" create text object for git chunks
-omap ig <Plug>(coc-git-chunk-inner)
-xmap ig <Plug>(coc-git-chunk-inner)
-omap ag <Plug>(coc-git-chunk-outer)
-xmap ag <Plug>(coc-git-chunk-outer)
-
-nmap gb <Plug>(coc-git-showblamedoc)
-
-
-" c
-autocmd FileType c setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
-autocmd FileType cpp setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
-autocmd FileType kconfig setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
-autocmd FileType make setlocal tabstop=8 shiftwidth=8 noexpandtab textwidth=80
-
-" LaTeX
-autocmd FileType tex setlocal textwidth=80
-
-" haskell
-let g:haskell_conceal_wide = 0
-let g:haskell_multiline_strings = 1
-
-" python
-" vim-python
-augroup vimrc-python
-  autocmd!
-  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
-        \ colorcolumn=79 formatoptions+=croq softtabstop=4
-        \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-augroup END
-
 " webdev
 autocmd FileType typescriptreact setlocal textwidth=100
 autocmd FileType javascript setlocal textwidth=100
@@ -310,14 +137,3 @@ autocmd FileType tsx setlocal textwidth=100
 autocmd FileType typescript setlocal textwidth=100
 autocmd FileType typescriptcommon setlocal textwidth=100
 autocmd FileType vue setlocal textwidth=100
-
-" mails
-autocmd FileType mail setlocal tabstop=8 shiftwidth=8 noexpandtab
-autocmd FileType gitsendmail setlocal tabstop=8 shiftwidth=8 noexpandtab
-
-" Vimtex
-let g:tex_flavor = 'latex'
-let g:vimtex_view_method = 'zathura'
-
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0

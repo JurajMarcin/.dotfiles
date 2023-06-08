@@ -23,8 +23,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
 + mbsync
     + pass
 + neovim
-    + haskell-language-server
-    + python-pynvim
++ LunarVim
 + neomutt
     + iconv
     + nsxiv
