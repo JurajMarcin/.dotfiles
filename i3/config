@@ -136,6 +136,18 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move focused workspace
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output down
+bindsym $mod+Control+k move workspace to output up
+bindsym $mod+Control+l move workspace to output right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Control+Left move workspace to output left
+bindsym $mod+Control+Down move workspace to output down
+bindsym $mod+Control+Up move workspace to output up
+bindsym $mod+Control+Right move workspace to output right
+
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
 
@@ -225,18 +237,6 @@ bindsym Mod4+Shift+s exec --no-startup-id "flameshot gui"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# Workspace screens
-workspace $ws1 output primary
-workspace $ws2 output eDP-1 eDP1 eDP-1-1 DP2
-workspace $ws3 output primary
-workspace $ws4 output eDP-1 eDP1 eDP-1-1 DP2
-workspace $ws5 output primary
-workspace $ws6 output eDP-1 eDP1 eDP-1-1 DP2
-workspace $ws7 output primary
-workspace $ws8 output eDP-1 eDP1 eDP-1-1 DP2
-workspace $ws9 output primary
-workspace $ws10 output eDP-1 eDP1 eDP-1-1 DP2
 
 # Workspace apps
 assign [class="discord"] $ws2
