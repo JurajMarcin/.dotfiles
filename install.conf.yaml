@@ -25,7 +25,8 @@
     ~/.tmux: tmux
     # Zsh
     ~/.zshrc: zshrc
-    ~/.zshenv: zshenv
+    ~/.zshrc.local: zshrc.local
+    ~/.zshenv.local: zshenv.local
     ~/.zsh: zsh
 
     # -- X applications --
