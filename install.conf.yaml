@@ -20,6 +20,8 @@
     ~/.config/lvim/after: lvim/after
     # Neovim
     ~/.config/nvim: nvim
+    # Timewarrior
+    ~/.timewarrior/timewarrior.cfg: timewarrior/timewarrior.cfg
     # tmux
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
