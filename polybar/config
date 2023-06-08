@@ -1,10 +1,10 @@
 # vim: filetype=cfg
 
 [colors]
-bg     = #212121
-bg-alt = #CFD8DC
-fg     = #FFFFFF
-fg-alt = #616161
+fg     = #212121
+fg-alt = #CFD8DC
+bg     = #00FFFFFF
+bg-alt = #616161
 acc    = #F44336
 
 [bar/main]

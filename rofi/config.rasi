@@ -5,8 +5,8 @@ configuration {
 window {
     padding: 0;
     border: 0;
-    background-color: #424242;
-    text-color: #FFFFFF;
+    background-color: #EEEEEE;
+    text-color: #000000;
     font: "Iosevka 10";
 }
 
@@ -20,20 +20,20 @@ mainbox {
 inputbar {
     children: [prompt,entry];
     padding: 0;
-    background-color: #212121;
-    text-color: #FFFFFF;
+    background-color: #FFFFFF;
+    text-color: #000000;
     font: inherit;
 }
 
 prompt {
-    padding: 16px 8px;
+    padding: 8px 8px;
     background-color: inherit;
     text-color: inherit;
     font: inherit;
 }
 
 entry {
-    padding: 16px 8px;
+    padding: 8px 8px;
     background-color: inherit;
     text-color: inherit;
     font: inherit;
@@ -56,19 +56,19 @@ element {
 }
 
 element alternate.normal, element normal.normal {
-    background-color: #424242;
-    text-color: #FFFFFF;
+    background-color: #FFFFFF;
+    text-color: #000000;
     font: inherit;
 }
 
 element selected.normal {
-    background-color: #212121;
-    text-color: #FFFFFF;
+    background-color: #DDDDDD;
+    text-color: #000000;
     font: inherit;
 }
 
 element-icon {
-    size: 32px;
+    size: 14px;
 }
 
 element-text {

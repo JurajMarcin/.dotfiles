@@ -24,18 +24,19 @@ title_align left
 hide_edge_borders both
 
 # Theme
-# class			        border	bg	    text	indic	child_border
-client.focused		    #424242	#424242	#FFFFFF	#F44336	#424242
-client.focused_inactive	#616161 #616161 #FFFFFF	#F44336	#616161
-client.unfocused	    #9E9E9E #9E9E9E	#FFFFFF	#F44336	#CFD8DC
-client.urgent		    #F44336 #F44336	#FFFFFF	#F44336 #F44336
-client.placeholder	    #000000	#000000	#FFFFFF
+# class			        border      bg          text    indic   cild_border
+client.focused		    #FFFFFFAA   #FFFFFFAA   #424242 #F44336 #424242
+client.focused_inactive	#FFFFFFAA   #FFFFFFAA   #616161 #F44336 #616161
+client.unfocused	    #FFFFFFAA   #FFFFFFAA   #9E9E9E #F44336 #CFD8DC
+client.urgent		    #FFFFFFAA   #FFFFFFAA   #F44336 #F44336 #F44336
+client.placeholder	    #FFFFFFAA   #FFFFFFAA   #000000
 client.background	    #000000
+for_window [class=".*"] title_format " %title"
 
 # Gaps
 gaps inner 10
 gaps outer 0
-smart_gaps on
+smart_gaps off
 
 # Wallpaper
 exec_always --no-startup-id "xwallpaper --zoom ~/.local/share/wallpapers/background.jpg"
@@ -258,7 +259,7 @@ for_window [title="Bluetooth Devices"] resize set 800 600
 
 # Pavucontrol floating
 for_window [title="Volume Control"] floating enable
-for_window [title="Volume Control"] resize set 800 600
+for_window [title="Volume Control"] resize set 1200 600
 
 # Zoom windows
 for_window [class="zoom" title="^Breakout Rooms"] floating enable
