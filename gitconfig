@@ -1,0 +1,18 @@
+[user]
+	name = Juraj Marcin
+	email = juraj@jurajmarcin.com
+[alias]
+	graph = log --all --oneline --decorate --graph
+	logs = log --show-signature
+[sendemail]
+	smtpserver = mx.jurajmarcin.com
+	smtpuser = juraj@jurajmarcin.com
+	smtpencryption = ssl
+	smtpserverport = 465
+	suppresscc = self
+	bcc = juraj@jurajmarcin.com
+	xmailer = false
+	thread = true
+	confirm = always
+[core]
+	autocrlf = input

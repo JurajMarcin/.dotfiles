@@ -15,6 +15,9 @@
     # -- Command line applications --
     # GDB
     ~/.gdbinit: gdbinit
+    # Git
+    ~/.gitconfig: gitconfig
+    # Latexmk
     ~/.latexmkrc: latexmkrc
     # LunarVim
     ~/.config/lvim/config.lua: lvim/config.lua
