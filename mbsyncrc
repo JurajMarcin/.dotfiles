@@ -175,3 +175,80 @@ Patterns *
 Create Both
 Expunge Both
 SyncState *
+
+# Gamescrunch Google Workspace account
+IMAPAccount gamescrunch
+Host imap.gmail.com
+UserCmd "pass neomutt/gamescrunch/mail"
+PassCmd "pass neomutt/gamescrunch/pass"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gamescrunch-remote
+Account gamescrunch
+
+MaildirStore gamescrunch-local
+SubFolders Verbatim
+Path ~/Mail/Gamescrunch/
+Inbox ~/Mail/Gamescrunch/
+
+Channel gamescrunch-all
+Far :gamescrunch-remote:[Gmail]/"All Mail"
+Near :gamescrunch-local:Archive
+Create Near
+Expunge Near
+Sync Pull
+SyncState *
+
+Channel gamescrunch-drafts
+Far :gamescrunch-remote:[Gmail]/Drafts
+Near :gamescrunch-local:Drafts
+Create Near
+Expunge Near
+SyncState *
+
+Channel gamescrunch-sent
+Far :gamescrunch-remote:[Gmail]/"Sent Mail"
+Near :gamescrunch-local:Sent
+Create Near
+Expunge Near
+SyncState *
+
+Channel gamescrunch-spam
+Far :gamescrunch-remote:[Gmail]/Spam
+Near :gamescrunch-local:Spam
+Create Near
+Expunge Near
+SyncState *
+
+Channel gamescrunch-starred
+Far :gamescrunch-remote:[Gmail]/Starred
+Near :gamescrunch-local:Starred
+Create Near
+Expunge Near
+Sync Pull
+SyncState *
+
+Channel gamescrunch-trash
+Far :gamescrunch-remote:[Gmail]/Trash
+Near :gamescrunch-local:Trash
+Create Near
+Expunge Near
+SyncState *
+
+Channel gamescrunch-others
+Far :gamescrunch-remote:
+Near :gamescrunch-local:
+Patterns * ![Gmail]* !Archive !Drafts !Sent !Spam !Starred !Trash
+Create Both
+Expunge Near
+SyncState *
+
+Group gamescrunch
+Channel gamescrunch-all
+Channel gamescrunch-drafts
+Channel gamescrunch-sent
+Channel gamescrunch-spam
+Channel gamescrunch-starred
+Channel gamescrunch-trash
+Channel gamescrunch-others

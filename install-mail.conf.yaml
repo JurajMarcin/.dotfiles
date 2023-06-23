@@ -10,6 +10,7 @@
     - ~/Mail/Public
     - ~/.local/bin
     - ~/.local/share/systemd/user
+    - ~/Mail/Gamescrunch
 
 - link:
     # goimapnotify
@@ -35,5 +36,6 @@
     - [systemctl --user enable --now goimapnotify@personal.service, Enable notify for personal]
     - [systemctl --user enable --now goimapnotify@muni.service, Enable notify for muni]
     - [systemctl --user enable --now goimapnotify@public.service, Enable notify for public]
+    - [systemctl --user enable --now goimapnotify@gamescrunch.service, Enable notify for gamescrunch]
 
 # vi: set tabwidth=4 shiftwidth=4

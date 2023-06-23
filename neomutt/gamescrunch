@@ -1,0 +1,28 @@
+# Account specific
+
+set my_mail     = "`pass neomutt/gamescrunch/mail`"
+set my_pass     = "`pass neomutt/gamescrunch/pass`"
+
+color status    black magenta
+set spoolfile   = "+Gamescrunch"
+set trash       = "+Gamescrunch/Trash"
+unset record
+set postponed   = "+Gamescrunch/Drafts"
+
+# SMTP
+set smtp_url            = "smtps://$my_mail@smtp.gmail.com"
+set smtp_pass           = "$my_pass"
+set ssl_starttls        = "yes"
+set ssl_force_tls       = "yes"
+set smtp_authenticators = "login"
+
+# Info
+set realname            = "Juraj Marcin"
+set signature           = "~/.config/neomutt/gamescrunch.signature"
+set from                = "$my_mail"
+set use_from            = "yes"
+
+# Archive
+bind index          A       purge-message
+
+# vi: ft=neomuttrc
