@@ -17,7 +17,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = mouse
 
     ### Geometry ###
 
@@ -49,10 +49,10 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 10
+    progress_bar_height = 5
 
     # Set the frame width of the progress bar
-    progress_bar_frame_width = 1
+    progress_bar_frame_width = 0
 
     # Set the minimum width for the progress bar
     progress_bar_min_width = 150
@@ -73,7 +73,7 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 3
+    separator_height = 1
 
     # Padding between text and separator.
     padding = 8
@@ -229,7 +229,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 10
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -281,18 +281,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#616161"
-    foreground = "#FFFFFF"
+    background = "#FFFFFF"
+    foreground = "#999999"
     timeout = 5
 
 [urgency_normal]
-    background = "#212121"
-    foreground = "#FFFFFF"
+    background = "#FFFFFF"
+    foreground = "#000000"
     timeout = 15
 
 [urgency_critical]
-    background = "#e53935"
-    foreground = "#212121"
+    background = "#FFFFFF"
+    foreground = "#e53935"
     timeout = 0
 
 [fullscreen_delay_everything]
@@ -307,6 +307,7 @@
     urgency = critical
     fullscreen = show
     timeout = 1
-    background = "#616161"
-    foreground = "#FFFFFF"
+    background = "#FFFFFF"
+    foreground = "#555555"
+    highlight = "#555555"
     history_ignore = yes
