@@ -8,10 +8,12 @@
     - ~/Mail/Personal
     - ~/Mail/MUNI
     - ~/Mail/Public
+    - ~/.local/bin
 
 - link:
     # goimapnotify
     ~/.config/imapnotify: imapnotify
+    ~/.local/bin/notifynewmail: bin/notifynewmail
     # Khard
     ~/.config/khard: khard
     # Mbsync

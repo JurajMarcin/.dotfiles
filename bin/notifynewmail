@@ -1,0 +1,22 @@
+#!/bin/bash
+
+MAILDIR="${1:-$HOME/Mail}"
+
+new_count="`find "$MAILDIR" -type f \
+    -path '*new*' \
+    -not -path '*Archive*' | wc -l`"
+unread_count="`find "$MAILDIR" -type f \
+    -not -name '*2,*S*' \
+    -not -name '.*' \
+    -not -path '*Archive*' \
+    -not -path '*new*' | wc -l`"
+
+if [ $new_count -gt 0 -o $unread_count -gt 0 ]; then
+    echo "New mail in $MAILDIR: $new_count new and $unread_count unread"
+    dunstify -a "notifynewmail" \
+        -i mail-unread-symbolic.symbolic \
+        "New mail in `basename "$MAILDIR"`" \
+        "$new_count new and $unread_count unread"
+else
+    echo "No new mail in $MAILDIR"
+fi
