@@ -71,19 +71,31 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
+  -- tools
   "bash",
-  "c",
-  "javascript",
-  "json",
   "lua",
+  "yaml",
+  "dockerfile",
+  "make",
+  "markdown",
+  -- langs
+  "c",
   "python",
-  "typescript",
-  "tsx",
-  "css",
   "rust",
   "java",
-  "yaml",
   "haskell",
+  "go",
+  -- web
+  "html",
+  "javascript",
+  "typescript",
+  "tsx",
+  "json",
+  "css",
+  "prisma",
+  -- TeX
+  "latex",
+  "bibtex",
 }
 
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -169,6 +181,9 @@ lvim.plugins = {
   {"marko-cerovac/material.nvim"},
   {"navarasu/onedark.nvim"},
   {"tpope/vim-fugitive"},
+  {"aklt/plantuml-syntax"},
+  {"weirongxu/plantuml-previewer.vim"},
+  {"tyru/open-browser.vim"},
   -- {
   --   "folke/trouble.nvim",
   --   cmd = "TroubleToggle",
