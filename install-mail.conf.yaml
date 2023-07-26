@@ -11,6 +11,7 @@
     - ~/.local/bin
     - ~/.local/share/systemd/user
     - ~/Mail/Gamescrunch
+    - ~/.local/bin
 
 - link:
     # goimapnotify
