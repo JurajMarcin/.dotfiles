@@ -79,7 +79,7 @@ sidebar_whitelist `find ~/Mail -type d -name cur \
     -not -path '*2019*' \
     -not -path '*2020*' \
     -not -path '*2021*' \
-    -not -path '*2022jaro*' \
+    -not -path '*2022*' \
     -not -path '*Testy-MAT*' \
     -printf '"%h"\n' | sort | xargs`
 
