@@ -48,8 +48,6 @@
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     # i3-gaps
     ~/.config/i3: i3
-    # Neovim
-    ~/.config/nvim: nvim
     # Picom
     ~/.config/picom.conf: picom.conf
     ~/.local/share/systemd/user/picom.service: systemd/user/picom.service
