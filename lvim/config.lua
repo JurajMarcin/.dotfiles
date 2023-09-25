@@ -50,7 +50,8 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.builtin.theme.options.style = "storm"
 
 -- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope grep_string<CR>", "String" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
 --   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -143,9 +144,9 @@ lvim.builtin.treesitter.highlight.enable = true
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { command = "black", filetypes = { "python" } },
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "black", filetypes = { "python" } },
 --   { command = "isort", filetypes = { "python" } },
 --   {
 --     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
@@ -156,12 +157,12 @@ lvim.builtin.treesitter.highlight.enable = true
 --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
 --     filetypes = { "typescript", "typescriptreact" },
 --   },
--- }
+}
 
 -- -- set additional linters
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8", filetypes = { "python" } },
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "pylint", filetypes = { "python" } },
 --   {
 --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
 --     command = "shellcheck",
@@ -174,7 +175,7 @@ lvim.builtin.treesitter.highlight.enable = true
 --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
 --     filetypes = { "javascript", "python" },
 --   },
--- }
+}
 
 -- Additional Plugins
 lvim.plugins = {
@@ -184,6 +185,7 @@ lvim.plugins = {
   {"aklt/plantuml-syntax"},
   {"weirongxu/plantuml-previewer.vim"},
   {"tyru/open-browser.vim"},
+  {"anntzer/vim-cython"},
   -- {
   --   "folke/trouble.nvim",
   --   cmd = "TroubleToggle",
@@ -215,3 +217,14 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.colorcolumn = '+0,+20'
+
+lvim.builtin.project.patterns = {
+    ".git",
+    "_darcs",
+    ".hg",
+    ".bzr",
+    ".svn",
+    "package.json",
+    "pom.xml"
+}
+lvim.builtin.project.silent_chdir = false
