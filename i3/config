@@ -100,7 +100,7 @@ bindsym Shift+Print exec --no-startup-id "flameshot full -p ~/Pictures -c"
 bindsym $mod+p exec --no-startup-id "pavucontrol"
 
 # autoconf monitors
-bindsym $mod+m exec "xrpm auto"
+bindsym $mod+m exec "xrpm set"
 
 # start rofi-pass
 bindsym $mod+Shift+d exec "rofi-pass"
@@ -246,6 +246,7 @@ assign [title="ferdi"] $ws2
 assign [title="Ferdi"] $ws2
 assign [class="zoom"] $ws4
 
+for_window [class="ffpopen"] floating enable
 # Set Python Turtle to floating
 for_window [title="Python Turtle Graphics"] floating enable
 
