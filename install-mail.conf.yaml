@@ -9,6 +9,7 @@
     - ~/Mail/MUNI
     - ~/Mail/Public
     - ~/.local/bin
+    - ~/.local/share/systemd/user
 
 - link:
     # goimapnotify
@@ -20,10 +21,16 @@
     ~/.mbsyncrc: mbsyncrc
     # Neomutt
     ~/.config/neomutt: neomutt
+    # Systemd services
+    ~/.local/share/systemd/user/mail-sync@.service: systemd/user/mail-sync@.service
 
 - shell:
     # Update dotbot submodule
     - [git submodule update --init --recursive, Installing submodules]
+    # Reload systemd daeomon
+    - [systemctl --user daemon-reload, Reloading systemd daemon]
+    # Update on boot
+    - [systemctl --user enable --now mail-sync@-a.service, Enable sync]
     # goimapnotify
     - [systemctl --user enable --now goimapnotify@personal.service, Enable notify for personal]
     - [systemctl --user enable --now goimapnotify@muni.service, Enable notify for muni]

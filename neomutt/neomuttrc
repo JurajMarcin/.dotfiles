@@ -53,7 +53,7 @@ bind index          D       undelete-message
 bind index          U       toggle-new
 bind index          I       flag-message
 bind index,pager    \Cr     sync-mailbox
-macro index         S     "<shell-escape>mbsync -a<enter>" "run mbsync"
+macro index         S     "<shell-escape>systemctl --user start mail-sync@-a.service<enter>" "sync mail"
 bind pager          <up>    previous-line
 bind pager          <down>  next-line
 macro pager         \Cu     |urlscan\n
