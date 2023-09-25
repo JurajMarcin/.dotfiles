@@ -1,16 +1,30 @@
 #!/bin/bash
 
-if [[ "$1" = "--mute-toggle" ]]; then
-    pactl set-sink-mute @DEFAULT_SINK@ toggle >/dev/null
+if [ "$1" = "mic" ]; then
+    dev="@DEFAULT_AUDIO_SOURCE@"
+    muted="microphone-disabled-symbolic.symbolic"
+    high="microphone-sensitivity-high-symbolic.symbolic"
+    shift
 else
-    pactl set-sink-volume @DEFAULT_SINK@ $@ >/dev/null
+    dev="@DEFAULT_AUDIO_SINK@"
+    muted="audio-volume-muted-symbolic.symbolic"
+    high="audio-volume-high-symbolic.symbolic"
 fi
 
-volume=$(pactl get-sink-volume @DEFAULT_SINK@ | sed 's/.* \([[:digit:]]\+\)%.*/\1/' | head -n1)
-mute=$(pactl get-sink-mute @DEFAULT_SINK@)
-
-if [[ "$mute" = "Mute: yes" ]]; then
-    dunstify -a "bar-notify" -i audio-volume-muted-symbolic.symbolic -r 424242 -h int:value:$volume ""
+if [ "$1" = "mute" ]; then
+    wpctl set-mute "$dev" toggle
 else
-    dunstify -a "bar-notify" -i audio-volume-high-symbolic.symbolic -r 424242 -h int:value:$volume ""
+    wpctl set-volume -l 1.5 "$dev" $@
+fi
+
+output=$(wpctl get-volume "$dev")
+volume=$(echo $output | sed 's/^Volume: \([0-9]\)\.\([0-9]\{2\}\).*$/\1\2/')
+if [ "$volume" -ge 100 ]; then
+    volume="100"
+fi
+
+if echo $output | grep -q "MUTED"; then
+    dunstify -a "bar-notify" -i "$muted" -r 424242 -h int:value:$volume ""
+else
+    dunstify -a "bar-notify" -i "$high" -r 424242 -h int:value:$volume ""
 fi

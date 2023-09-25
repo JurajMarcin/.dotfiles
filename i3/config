@@ -68,18 +68,18 @@ bindsym XF86Sleep exec --no-startup-id "systemctl suspend"
 
 ## MEDIA ##
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "volume +1%"
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "volume +10%"
-bindsym XF86AudioLowerVolume exec --no-startup-id "volume -1%"
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "volume -10%"
-bindsym XF86AudioMute exec --no-startup-id "volume --mute-toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "volume 1%+"
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "volume 10%+"
+bindsym XF86AudioLowerVolume exec --no-startup-id "volume 1%-"
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "volume 10%-"
+bindsym XF86AudioMute exec --no-startup-id "volume mute"
 
 bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
 
-bindsym XF86AudioMicMute exec --no-startup-id "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+bindsym XF86AudioMicMute exec --no-startup-id "volume mic mute"
 
 ## APPS ##
 

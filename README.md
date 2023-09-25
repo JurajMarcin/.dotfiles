@@ -17,7 +17,7 @@ Obligatory dotfiles repository for my Arch Linux setup.
     + xsecurelock
     + pavucontrol
     + playerctl
-    + libpulse (pactl)
+    + wireplumber (wpctl)
     + xbacklight
     + xwallpaper
 + mbsync
