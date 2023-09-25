@@ -25,7 +25,12 @@ MAILDIR=$1
 
 get_current_icon() {
 
-    if [ "`find "$MAILDIR" -type f -not -name '*2,*S*' -not -name '.*' -not -path '*Archive*' | wc -l`" -ne 0 ]; then
+    if [ "`find "$MAILDIR" -type f \
+            -not -name '*2,*S*' \
+            -not -name '.*' \
+            -not -path '*Archive*' \
+            -not -path '*GitLab*' \
+            | wc -l`" -ne 0 ]; then
         color="$COLOR_NEW"
     else
         color=""
