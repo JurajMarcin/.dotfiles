@@ -1,0 +1,57 @@
+[bell.command]
+args = ["/usr/share/sounds/freedesktop/stereo/bell.oga"]
+program = "pw-play"
+
+[colors.bright]
+black = "#424242"
+blue = "#53a4f3"
+cyan = "#26bad1"
+green = "#7aba39"
+magenta = "#a94dbb"
+red = "#e83a3f"
+white = "#d8d8d8"
+yellow = "#fee92e"
+
+[colors.footer_bar]
+background = "#FFEA00"
+foreground = "#212121"
+
+[colors.normal]
+black = "#212121"
+blue = "#134eb2"
+cyan = "#0e707c"
+green = "#457b23"
+magenta = "#550087"
+red = "#b7141e"
+white = "#eeeeee"
+yellow = "#f5971d"
+
+[colors.primary]
+background = "#222221"
+bright_foreground = "#FFFFFF"
+dim_foreground = "#BDBDBD"
+foreground = "#e4e4e4"
+
+[colors.search.matches]
+background = "#FFEA00"
+foreground = "#212121"
+
+[font]
+size = 11.0
+
+[font.bold]
+style = "Bold"
+
+[font.bold_italic]
+style = "Bold Italic"
+
+[font.italic]
+style = "Regular Italic"
+
+[font.normal]
+family = "Iosevka Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
