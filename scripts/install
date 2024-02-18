@@ -59,6 +59,7 @@ DEST=$2
 
 if [ "$OVERWRITE" -eq 1 -o ! -e "$DEST" ]; then
 	rm -rf "$DEST"
+	mkdir -p "`dirname "$DEST"`"
 	cp -riv "$SOURCE" "$DEST"
 	exit 0
 fi
