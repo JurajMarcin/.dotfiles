@@ -1,0 +1,70 @@
+#!/bin/bash
+
+set -e
+
+function error {
+	echo $@
+	exit 1
+}
+
+function install_file {
+	SRC=$1
+	DST=$2
+	if [ -f "$DST" ]; then
+		diff --brief "$SRC" "$DST" \
+			|| nvim -d "$SRC" "$DST" \
+			|| vim -d "$SRC" "$DST"
+	else
+		if [ -e "$DST" ]; then
+			error "$DST exists and is not a file"
+		fi
+		mkdir -p "`dirname "$DST"`"
+		cp -iv "$SRC" "$DST"
+	fi
+}
+
+function merge_dirs {
+	SRC_DIR=$1
+	DST_DIR=$2
+
+	for SRC_ITEM in `find "$SRC_DIR" -mindepth 1`; do
+		REL_SRC_ITEM=`realpath --relative-to "$SRC_DIR" "$SRC_ITEM"`
+		DST_ITEM="$DST_DIR/$REL_SRC_ITEM"
+
+		if [ -f "$SRC_ITEM" ]; then
+			install_file "$SRC_ITEM" "$DST_ITEM"
+			continue
+		fi
+		if [ -d "$SRC_ITEM" ]; then
+			mkdir -p "$DST_ITEM"
+		fi
+	done
+}
+
+USAGE="$0 SOURCE DEST"
+
+if [ $# -lt 2 ]; then
+	echo $USAGE
+	exit 1
+fi
+
+OVERWRITE=0
+if [ "$1" = "-o" -a $# -gt 2 ]; then
+	OVERWRITE=1
+	shift
+fi
+
+SOURCE=$1
+DEST=$2
+
+if [ "$OVERWRITE" -eq 1 -o ! -e "$DEST" ]; then
+	rm -rf "$DEST"
+	cp -riv "$SOURCE" "$DEST"
+	exit 0
+fi
+
+if [ -d "$SOURCE" -a -d "$DEST" ]; then
+	merge_dirs "$SOURCE" "$DEST"
+	exit 0
+fi
+install_file "$SOURCE" "$DEST"
